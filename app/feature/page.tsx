@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   // other metadata
 };
 
-const Blog = () => {
+const Feature = () => {
   return (
     <>
       <Breadcrumb
-        pageName="Blog Grid"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="Tính năng"
+        description="Khám phá các tính năng nổi bật của DSchool, nền tảng quản lý dữ liệu tập trung giúp bạn tổ chức, truy cập và phân tích dữ liệu một cách hiệu quả."
       />
 
       <section className="pb-[120px] pt-[120px]">
@@ -99,4 +99,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Feature;

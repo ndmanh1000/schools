@@ -14,7 +14,7 @@ const featuresData: Feature[] = [
     ),
     title: "Quản lý vận hành tập trung, giảm thời gian, giấy tờ",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Quản lý toàn bộ hệ thống trong một nền tảng duy nhất – giảm thiểu giấy tờ và rườm rà.",
   },
   {
     id: 1,
@@ -29,7 +29,7 @@ const featuresData: Feature[] = [
     ),
     title: "LMS hiện đại, học trực tuyến dễ dàng",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Nền tảng học trực tuyến linh hoạt, giúp học sinh tiếp cận bài giảng và tài liệu từ mọi thiết bị.",
   },
   {
     id: 1,
@@ -44,7 +44,7 @@ const featuresData: Feature[] = [
     ),
     title: "Khảo thí & tuyển sinh dễ dàng, minh bạch",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Tự động hóa thi cử và tuyển sinh, giúp đánh giá công bằng và giảm thiểu gian lận.",
   },
   {
     id: 1,
@@ -59,7 +59,7 @@ const featuresData: Feature[] = [
     ),
     title: "Kết nối dữ liệu cơ sở ngành Giáo dục		",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Kết nối và đồng bộ dữ liệu giữa các cấp quản lý, tiết kiệm thời gian thống kê – báo cáo.",
   },
   // {
   //   id: 1,

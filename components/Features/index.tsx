@@ -8,7 +8,7 @@ const Features = () => {
       <section id="features" className="py-16 md:py-20 lg:py-28">
         <div className="container">
           <SectionTitle
-            title="Quản lý dữ liệu tập trung với DSchool edwfdew"
+            title="Quản lý dữ liệu tập trung với DSchool"
             paragraph=" DSchool cung cấp một nền tảng quản lý dữ liệu tập trung, giúp bạn dễ dàng tổ chức, truy cập và phân tích dữ liệu từ nhiều nguồn khác nhau."
             center
           />
