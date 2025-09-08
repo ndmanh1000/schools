@@ -1,11 +1,13 @@
 import SectionTitle from "../Common/SectionTitle";
 import SingleFeature from "./SingleFeature";
 import featuresData from "./featuresData";
+import RadialFeatures from "./RadialFeatures";
+import trangchus2 from "../../public/images/logo/trangchus2.png";
 
 const Features = () => {
   return (
     <>
-      <section id="features" className="py-16 md:py-20 lg:py-28">
+      <section id="features" className="py-16 md:py-20 lg:py-28 flex flex-col md:gap-3 gap-6">
         <div className="container">
           <SectionTitle
             title="Quản lý dữ liệu tập trung với DSchool"
@@ -13,7 +15,11 @@ const Features = () => {
             center
           />
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-2">
+         <div className="flex items-center justify-center w-full">
+          <img src={trangchus2.src} alt="trangchus2" className="object-cover " />
+         </div>
+
+          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-2 md:mt-16">
             {featuresData.map((feature) => (
               <SingleFeature key={feature.id} feature={feature} />
             ))}

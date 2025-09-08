@@ -30,4 +30,98 @@
   input#checkboxLabel:checked ~ .box span {
     @apply opacity-100;
   }
+
+  /* Scroll reveal base states for elements with `.wow` */
+  .wow {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition: opacity 600ms ease, transform 600ms ease;
+    will-change: opacity, transform;
+  }
+
+  /* Optional variant for fadeInUp already used in markup */
+  .wow.fadeInUp {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  /* When revealed by IntersectionObserver */
+  .wow.revealed,
+  .wow.fadeInUp.revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Fancy chip with gradient border and subtle glass effect */
+  .chip {
+    position: relative;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .dark .chip {
+    background: rgba(17, 24, 39, 0.6);
+  }
+  .chip::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px; /* border thickness */
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(74,108,247,0.9), rgba(164,120,246,0.9));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .chip:hover {
+    box-shadow: 0 8px 28px rgba(74, 108, 247, 0.18);
+  }
+
+  /* Animated outer dashed rings */
+  @keyframes dash-move {
+    to {
+      stroke-dashoffset: -320;
+    }
+  }
+  @keyframes dash-move-rev {
+    to {
+      stroke-dashoffset: 320;
+    }
+  }
+  .dash-rotate {
+    animation: none;
+  }
+  .dash-rotate-slow {
+    animation: none;
+  }
+
+  /* Orbiting labels around the radial ring */
+  @keyframes orbit-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .orbit-spin {
+    animation: orbit-spin 22s linear infinite;
+  }
+
+  /* Fan-like rotor for evenly spaced items */
+  @keyframes fan-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .fan-rotor {
+    animation: fan-rotate 16s linear infinite;
+    transform-origin: center;
+  }
+
+  /* Slow drifting seam for middle ring */
+  .seam-drift {
+    animation: dash-move 30s linear infinite;
+  }
 }

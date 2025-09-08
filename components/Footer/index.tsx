@@ -18,9 +18,9 @@ const Footer: React.FC = () => {
         data-wow-delay=".1s"
       >
         <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
-              <div className="mb-12 max-w-[360px] lg:mb-16">
+          <div className="grid grid-cols-1 gap-10 px-4 sm:grid-cols-2 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div className="mb-12 max-w-[420px] lg:mb-16">
                 <div className="mb-8 inline-block">
                   <Image
                     src="/images/logo/logo-2.webp"
@@ -42,8 +42,9 @@ const Footer: React.FC = () => {
                     aria-label="social-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    className="mr-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-body-color transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/10 hover:text-primary dark:bg-white/5 dark:text-body-color-dark"
                   >
+                    <span className="sr-only">Facebook</span>
                     <svg
                       width="9"
                       height="18"
@@ -57,21 +58,21 @@ const Footer: React.FC = () => {
               </div>
             </div>
 
-            <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
+            <div className="sm:col-span-1 lg:col-span-2">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
                   Liên hệ
                 </h2>
                 <ul className="grid grid-cols-1 gap-4 md:gap-2 ">
-                  <li className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary">
+                  <li className="mb-2 text-base text-body-color dark:text-body-color-dark">
                     <p>Hotline</p>
                     <p>098 131 72 25</p>
                   </li>
-                  <li className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary">
+                  <li className="mb-2 text-base text-body-color dark:text-body-color-dark">
                     <p>Email</p>
                     <p>support@dschool.com.vn</p>
                   </li>
-                  <li className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary">
+                  <li className="mb-2 text-base text-body-color dark:text-body-color-dark">
                     <p>Address</p>
                     <p>BT16B6 - 32, Làng Việt Kiều Châu Âu, Hà Đông, Hà Nội</p>
                   </li>
@@ -79,7 +80,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
 
-            <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
+            <div className="sm:col-span-1 lg:col-span-2">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
                   Đường dẫn
@@ -88,46 +89,50 @@ const Footer: React.FC = () => {
                   <li>
                     <a
                       href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
                       Trang chủ
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
                     </a>
                   </li>
                   <li>
                     <a
                       href="/about"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
                       Giới thiệu
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
                     </a>
                   </li>
                   <li>
                     <a
                       href="/blog"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
                       Tính năng
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
                       Liên hệ
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
+            <div className="sm:col-span-2 lg:col-span-3">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
                   Tải xuống
                 </h2>
                 <ul>
-                  <div className="flex w-full flex-col items-center gap-2 md:items-start">
+                  <div className="flex w-full flex-col items-center gap-3 md:items-start">
                     <div className="flex w-full flex-row items-center">
                       <div className="w-full">
                         <Link href="" target="_blank">
@@ -136,7 +141,7 @@ const Footer: React.FC = () => {
                             alt="Google Play"
                             width={135}
                             height={40}
-                            className="w-full transition-transform duration-200 ease-out hover:scale-105 hover:cursor-pointer"
+                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
                           />
                         </Link>
                       </div>
@@ -147,7 +152,7 @@ const Footer: React.FC = () => {
                             alt="App Store"
                             width={135}
                             height={40}
-                            className="w-full transition-transform duration-200 ease-out hover:scale-105 hover:cursor-pointer"
+                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
                           />
                         </Link>
                       </div>
@@ -160,7 +165,7 @@ const Footer: React.FC = () => {
                             alt="Windows"
                             width={135}
                             height={40}
-                            className="w-full transition-transform duration-200 ease-out hover:scale-105 hover:cursor-pointer"
+                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
                           />
                         </Link>
                       </div>
@@ -171,7 +176,7 @@ const Footer: React.FC = () => {
                             alt="Mac"
                             width={135}
                             height={40}
-                            className="w-full transition-transform duration-200 ease-out hover:scale-105 hover:cursor-pointer"
+                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
                           />
                         </Link>
                       </div>
@@ -182,7 +187,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
+          <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
         </div>
         <div className="absolute right-0 top-14 z-[-1]">
           <svg
