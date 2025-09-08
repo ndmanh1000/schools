@@ -16,7 +16,7 @@ const Hero = () => {
               >
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
                   Digital School - Nền tảng duy nhất số hóa toàn diện cho trường
-                  học"
+                  học
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
                   Tắt cả mọi nghiệp vụ trên cùng một hệ thống
