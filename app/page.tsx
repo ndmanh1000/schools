@@ -13,6 +13,7 @@ import { Metadata } from "next";
 import AboutSectionThree from "@/components/About/AboutSectionThree";
 import AboutSectionFour from "@/components/About/AboutSectionFour";
 
+
 export const metadata: Metadata = {
   title: "Free Next.js Template for Startup and SaaS",
   description: "This is Home for Startup Nextjs Template",
@@ -35,6 +36,9 @@ export default function Home() {
       {/* <Pricing /> */}
       {/* <Blog /> */}
       <Contact />
+
+      {/* Test Modal - Remove this after testing */}
+
     </>
   );
 }

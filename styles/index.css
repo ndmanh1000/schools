@@ -11,7 +11,7 @@
 }
 
 @layer components {
-  input[type="checkbox"]:checked ~ label span svg {
+  input[type="checkbox"]:checked~label span svg {
     @apply inline-flex;
   }
 
@@ -19,15 +19,47 @@
     @apply py-5 lg:py-2;
   }
 
+  /* Modal animations */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slideIn {
+    animation: slideIn 0.3s ease-out;
+  }
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
   .sticky .menu-scroll.active {
     @apply opacity-70;
   }
 
-  input#togglePlan:checked ~ .dot {
+  input#togglePlan:checked~.dot {
     @apply translate-x-full;
   }
 
-  input#checkboxLabel:checked ~ .box span {
+  input#checkboxLabel:checked~.box span {
     @apply opacity-100;
   }
 
@@ -60,23 +92,27 @@
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
   }
+
   .dark .chip {
     background: rgba(17, 24, 39, 0.6);
   }
+
   .chip::before {
     content: "";
     position: absolute;
     inset: 0;
-    padding: 1px; /* border thickness */
+    padding: 1px;
+    /* border thickness */
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(74,108,247,0.9), rgba(164,120,246,0.9));
+    background: linear-gradient(135deg, rgba(74, 108, 247, 0.9), rgba(164, 120, 246, 0.9));
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
-            mask-composite: exclude;
+    mask-composite: exclude;
     pointer-events: none;
   }
+
   .chip:hover {
     box-shadow: 0 8px 28px rgba(74, 108, 247, 0.18);
   }
@@ -87,14 +123,17 @@
       stroke-dashoffset: -320;
     }
   }
+
   @keyframes dash-move-rev {
     to {
       stroke-dashoffset: 320;
     }
   }
+
   .dash-rotate {
     animation: none;
   }
+
   .dash-rotate-slow {
     animation: none;
   }
@@ -105,6 +144,7 @@
       transform: rotate(360deg);
     }
   }
+
   .orbit-spin {
     animation: orbit-spin 22s linear infinite;
   }
@@ -115,6 +155,7 @@
       transform: rotate(360deg);
     }
   }
+
   .fan-rotor {
     animation: fan-rotate 16s linear infinite;
     transform-origin: center;

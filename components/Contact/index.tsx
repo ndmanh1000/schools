@@ -11,7 +11,7 @@ interface ContactProps {
 // ✅ Đặt mặc định cho props nếu không được truyền
 const Contact: React.FC<ContactProps> = ({
   showForm = true,
-  setShowForm = () => {},
+  setShowForm = () => { },
 }) => {
   const [formData, setFormData] = React.useState({
     name: "",
