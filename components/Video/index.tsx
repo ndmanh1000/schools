@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "../Common/SectionTitle";
 import { CommonModal, useModal } from "../Modal/CommonModal";
+import { submitToGoogleSheetsAPI, FormData as GoogleSheetsFormData } from "../../lib/googleSheets";
 
 const Video = () => {
   const { isOpen: isRegisterModalOpen, openModal: openRegisterModal, closeModal: closeRegisterModal } = useModal();
@@ -21,7 +22,7 @@ const Video = () => {
     message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -29,9 +30,48 @@ const Video = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log("Registration form submitted:", formData);
-    alert("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.");
+  const handleSubmit = async () => {
+    try {
+      // Validate required fields
+      if (!formData.name || !formData.email || !formData.phone) {
+        alert("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)");
+        return;
+      }
+
+      // Prepare data for Google Sheets
+      const googleSheetsData: GoogleSheetsFormData = {
+        name: formData.name,
+        position: formData.position,
+        email: formData.email,
+        phone: formData.phone,
+        organization: formData.organization,
+        message: formData.message,
+        timestamp: new Date().toISOString(),
+        source: "register"
+      };
+
+      // Submit to Google Sheets
+      const success = await submitToGoogleSheetsAPI(googleSheetsData);
+
+      if (success) {
+        alert("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.");
+        // Reset form
+        setFormData({
+          name: "",
+          position: "",
+          email: "",
+          phone: "",
+          organization: "",
+          message: "",
+        });
+        closeRegisterModal();
+      } else {
+        alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+    }
   };
 
   const registerModalContent = (
@@ -45,7 +85,7 @@ const Video = () => {
         </p>
       </div>
 
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* Họ và tên */}
           <div>

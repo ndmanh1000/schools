@@ -2,8 +2,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CommonModal, useModal } from "../Modal/CommonModal";
+import { submitToGoogleSheetsAPI, FormData as GoogleSheetsFormData } from "../../lib/googleSheets";
 
-const Hero = ({ onRegisterClick }) => {
+const Hero = () => {
   const { isOpen: isBuyModalOpen, openModal: openBuyModal, closeModal: closeBuyModal } = useModal();
   const [formData, setFormData] = useState({
     name: "",
@@ -14,7 +15,7 @@ const Hero = ({ onRegisterClick }) => {
     message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -22,9 +23,54 @@ const Hero = ({ onRegisterClick }) => {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log("Buy form submitted:", formData);
-    alert("Cảm ơn bạn đã quan tâm! Chúng tôi sẽ liên hệ lại sớm nhất để tư vấn gói phù hợp.");
+  const handleSubmit = async () => {
+    try {
+      console.log("🚀 Hero: Starting form submission...");
+
+      // Validate required fields
+      if (!formData.name || !formData.email || !formData.phone) {
+        alert("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)");
+        return;
+      }
+
+      // Prepare data for Google Sheets
+      const googleSheetsData: GoogleSheetsFormData = {
+        name: formData.name,
+        position: formData.position,
+        email: formData.email,
+        phone: formData.phone,
+        organization: formData.organization,
+        message: formData.message,
+        timestamp: new Date().toISOString(),
+        source: "buy"
+      };
+
+      console.log("📤 Hero: Sending data to Google Sheets:", googleSheetsData);
+
+      // Submit to Google Sheets
+      const success = await submitToGoogleSheetsAPI(googleSheetsData);
+
+      console.log("✅ Hero: Submission result:", success);
+
+      if (success) {
+        alert("Cảm ơn bạn đã quan tâm! Chúng tôi sẽ liên hệ lại sớm nhất để tư vấn gói phù hợp.");
+        // Reset form
+        setFormData({
+          name: "",
+          position: "",
+          email: "",
+          phone: "",
+          organization: "",
+          message: "",
+        });
+        closeBuyModal();
+      } else {
+        alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+    }
   };
 
   const handleBuyClick = () => {
@@ -37,9 +83,6 @@ const Hero = ({ onRegisterClick }) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-    }
-    if (onRegisterClick) {
-      onRegisterClick();
     }
   };
 
@@ -54,7 +97,7 @@ const Hero = ({ onRegisterClick }) => {
         </p>
       </div>
 
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* Họ và tên */}
           <div>
