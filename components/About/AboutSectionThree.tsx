@@ -1,26 +1,13 @@
 import Image from "next/image";
 
-const AboutSectionTwo = () => {
+const AboutSectionThree = () => {
   return (
     <section className="py-16 md:py-20 lg:py-28">
-      <div className="container">
+      <div className="container border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
         <p className="py-5 text-center text-2xl font-semibold text-black">
-          Giáo viên
+          Hành chính, kế toán
         </p>
         <div className="-mx-4 flex flex-wrap items-center">
-          <div className="w-full px-4 lg:w-1/2">
-            <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
-              <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Quản lý lớp học
-              </div>
-              <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Theo sát lịch làm việc, thời khóa biểu
-              </div>
-              <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Ra đề tự động, chấm thi online
-              </div>
-            </div>
-          </div>
           <div className="w-full px-4 lg:w-1/2">
             <div
               className="wow fadeInUp relative mx-auto mb-12 aspect-[25/24] max-w-[500px] text-center lg:m-0"
@@ -40,10 +27,23 @@ const AboutSectionTwo = () => {
               />
             </div>
           </div>
+          <div className="w-full px-4 lg:w-1/2">
+            <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
+              <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
+                -Quản lý dễ dàng, lưu trữ thuận tiện với hồ sơ số
+              </div>
+              <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
+                -Theo dõi công, lương chi tiết, tránh nhầm lẫn
+              </div>
+              <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
+                -Báo cáo thu, chi, học phí minh bạch
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default AboutSectionTwo;
+export default AboutSectionThree;

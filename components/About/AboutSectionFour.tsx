@@ -1,23 +1,22 @@
 import Image from "next/image";
 
-const AboutSectionTwo = () => {
+const AboutSectionFour = () => {
   return (
     <section className="py-16 md:py-20 lg:py-28">
       <div className="container">
         <p className="py-5 text-center text-2xl font-semibold text-black">
-          Giáo viên
+          Phụ huynh,học sinh
         </p>
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Quản lý lớp học
+                -Theo dõi kết quả học tập, chuyên cần, khen thưởng, kỷ luật và
+                học phí rõ ràng
               </div>
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Theo sát lịch làm việc, thời khóa biểu
-              </div>
-              <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Ra đề tự động, chấm thi online
+                -Tăng cường trải nghiệm học tập với công nghệ, dễ tiếp cận tài
+                liệu, học tập mọi lúc mọi nơ
               </div>
             </div>
           </div>
@@ -46,4 +45,4 @@ const AboutSectionTwo = () => {
   );
 };
 
-export default AboutSectionTwo;
+export default AboutSectionFour;
