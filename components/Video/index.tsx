@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "../Common/SectionTitle";
@@ -76,6 +76,14 @@ const Video = () => {
               <p className="text-gray-600">{selectedReason.desc}</p>
             </motion.div>
           </AnimatePresence>
+        </div>
+        <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mt-10 xl:mt-14">
+          <Link
+            href="#"
+            className="rounded-md bg-[#053cc0] px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+          >
+            Mua ngay
+          </Link>
         </div>
       </div>
 

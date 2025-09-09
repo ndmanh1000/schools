@@ -19,16 +19,16 @@ import Parnet4 from "/public/images/brands/Parnet4.webp";
 
 // ✅ Danh sách ảnh đối tác (array of objects)
 const brandImages = [
-  { id: 1, name: "Đối tác 1", image: doitac1, href: "#" },
-  { id: 2, name: "Đối tác 2", image: doitac2, href: "#" },
-  { id: 3, name: "Logo 2", image: lo2, href: "#" },
-  { id: 4, name: "Logo 3", image: lo3, href: "#" },
-  { id: 5, name: "Logo 4", image: lo4, href: "#" },
-  { id: 6, name: "Logo 5", image: lo5, href: "#" },
-  { id: 7, name: "Logo 6", image: lo6, href: "#" },
-  { id: 8, name: "Logo 7", image: lo7, href: "#" },
-  { id: 9, name: "Parnet 3", image: Parnet3, href: "#" },
-  { id: 10, name: "Parnet 4", image: Parnet4, href: "#" },
+  { id: 1, name: "Đối tác 1", image: doitac1 },
+  { id: 2, name: "Đối tác 2", image: doitac2 },
+  { id: 3, name: "Logo 2", image: lo2 },
+  { id: 4, name: "Logo 3", image: lo3 },
+  { id: 5, name: "Logo 4", image: lo4 },
+  { id: 6, name: "Logo 5", image: lo5 },
+  { id: 7, name: "Logo 6", image: lo6 },
+  { id: 8, name: "Logo 7", image: lo7 },
+  { id: 9, name: "Parnet 3", image: Parnet3 },
+  { id: 10, name: "Parnet 4", image: Parnet4 },
 ];
 
 const Brands = () => {
@@ -57,7 +57,6 @@ const Brands = () => {
                 <SwiperSlide key={brand.id}>
                   <div className="flex w-full items-center justify-center">
                     <a
-                      href={brand.href}
                       target="_blank"
                       rel="nofollow noreferrer"
                       className="relative h-20 w-[180px] opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 dark:opacity-60 dark:hover:opacity-100"

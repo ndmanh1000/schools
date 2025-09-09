@@ -1,6 +1,19 @@
+"use client";
+
 import Link from "next/link";
 
-const Hero = () => {
+const Hero = ({ onRegisterClick }) => {
+  const handleScroll = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    if (onRegisterClick) {
+      onRegisterClick();
+    }
+  };
+
   return (
     <>
       <section
@@ -28,12 +41,13 @@ const Hero = () => {
                   >
                     🔥 Mua ngay
                   </Link>
-                  <Link
-                    href="#"
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleScroll(e, "contact")}
                     className="inline-block rounded-md bg-[#ffc600] px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-[#ffc600]/80"
                   >
                     Đăng ký trải nghiệm
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
