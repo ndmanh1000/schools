@@ -1,9 +1,18 @@
 "use client";
 import React from "react";
-
 import NewsLatterBox from "./NewsLatterBox";
 
-const Contact = ({ showForm, setShowForm }) => {
+// ✅ Khai báo kiểu dữ liệu props
+interface ContactProps {
+  showForm?: boolean;
+  setShowForm?: (value: boolean) => void;
+}
+
+// ✅ Đặt mặc định cho props nếu không được truyền
+const Contact: React.FC<ContactProps> = ({
+  showForm = true,
+  setShowForm = () => {},
+}) => {
   const [formData, setFormData] = React.useState({
     name: "",
     position: "",
@@ -13,7 +22,11 @@ const Contact = ({ showForm, setShowForm }) => {
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -21,15 +34,13 @@ const Contact = ({ showForm, setShowForm }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData); // Log or process the data (e.g., API call)
-    // Example: Send to an API
-    // fetch('/api/submit', { method: 'POST', body: JSON.stringify(formData), headers: { 'Content-Type': 'application/json' } })
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
-    //   .catch(error => console.error("Error:", error));
-    setShowForm(false); // Hide the form after submission
+    console.log("Form Data Submitted:", formData);
+
+    // TODO: Gửi dữ liệu form ở đây nếu cần
+
+    setShowForm(false); // ✅ Ẩn form sau khi submit
   };
 
   return (
@@ -45,12 +56,6 @@ const Contact = ({ showForm, setShowForm }) => {
               data-wow-delay=".15s"
             >
               {showForm ? (
-                <>
-                  <p className="mb-12 text-base font-medium text-body-color">
-                    Vui lòng điền đầy đủ thông tin để được tư vấn miễn phí.
-                  </p>
-                </>
-              ) : (
                 <form onSubmit={handleSubmit}>
                   <div className="-mx-4 flex flex-wrap">
                     {/* Họ và tên */}
@@ -65,7 +70,7 @@ const Contact = ({ showForm, setShowForm }) => {
                           value={formData.name}
                           onChange={handleChange}
                           placeholder="Nhập tên của bạn"
-                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3"
                         />
                       </div>
                     </div>
@@ -80,7 +85,7 @@ const Contact = ({ showForm, setShowForm }) => {
                           name="position"
                           value={formData.position}
                           onChange={handleChange}
-                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3"
                         >
                           <option value="" disabled>
                             -- Chọn chức vụ --
@@ -108,7 +113,7 @@ const Contact = ({ showForm, setShowForm }) => {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="Nhập email của bạn"
-                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3"
                         />
                       </div>
                     </div>
@@ -125,7 +130,7 @@ const Contact = ({ showForm, setShowForm }) => {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="Nhập số điện thoại"
-                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3"
                         />
                       </div>
                     </div>
@@ -140,7 +145,7 @@ const Contact = ({ showForm, setShowForm }) => {
                           name="organization"
                           value={formData.organization}
                           onChange={handleChange}
-                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                          className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3"
                         >
                           <option value="" disabled>
                             -- Chọn đơn vị --
@@ -166,7 +171,7 @@ const Contact = ({ showForm, setShowForm }) => {
                           onChange={handleChange}
                           rows={5}
                           placeholder="Nhập lời nhắn của bạn"
-                          className="w-full resize-none rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                          className="w-full resize-none rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3"
                         ></textarea>
                       </div>
                     </div>
@@ -182,6 +187,10 @@ const Contact = ({ showForm, setShowForm }) => {
                     </div>
                   </div>
                 </form>
+              ) : (
+                <p className="text-center text-lg font-medium text-green-600">
+                  ✅ Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.
+                </p>
               )}
             </div>
           </div>
