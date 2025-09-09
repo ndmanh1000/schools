@@ -82,7 +82,7 @@ const Video = () => {
             href="#"
             className="rounded-md bg-[#053cc0] px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
           >
-            Mua ngay
+            Đăng ký ngay
           </Link>
         </div>
       </div>
