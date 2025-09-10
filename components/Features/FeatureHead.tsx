@@ -11,6 +11,28 @@ export default function FeatureHead() {
     const { isOpen: isRegisterModalOpen, openModal: openRegisterModal, closeModal: closeRegisterModal } = useModal();
     const { isOpen: isBuyModalOpen, openModal: openBuyModal, closeModal: closeBuyModal } = useModal();
 
+    // Debug modal states
+    console.log('Modal states:', { isRegisterModalOpen, isBuyModalOpen });
+
+    // Fallback functions for mobile
+    const handleRegisterClick = () => {
+        console.log('handleRegisterClick called');
+        try {
+            openRegisterModal();
+        } catch (error) {
+            console.error('Error opening register modal:', error);
+        }
+    };
+
+    const handleBuyClick = () => {
+        console.log('handleBuyClick called');
+        try {
+            openBuyModal();
+        } catch (error) {
+            console.error('Error opening buy modal:', error);
+        }
+    };
+
     // Form data for both modals
     const [registerFormData, setRegisterFormData] = useState({
         name: "",
@@ -52,11 +74,15 @@ export default function FeatureHead() {
         let loadingToastId: string | undefined;
 
         try {
+            console.log("🚀 Starting register form submission...");
+            
             // Validate required fields
             if (!registerFormData.name || !registerFormData.email || !registerFormData.phone) {
                 showError("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)", "Thiếu thông tin");
                 return;
             }
+
+            console.log("✅ Form validation passed");
 
             // Show loading notification
             loadingToastId = showLoading("Đang gửi thông tin...", "Vui lòng chờ");
@@ -73,12 +99,16 @@ export default function FeatureHead() {
                 source: "register"
             };
 
+            console.log("📤 Sending data to Google Sheets:", googleSheetsData);
+
             // Submit to Google Sheets
             const success = await submitToGoogleSheetsAPI(googleSheetsData);
 
             if (success) {
                 if (loadingToastId) dismissToast(loadingToastId);
                 showSuccess("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.", "Đăng ký thành công!");
+                console.log("✅ Form submitted successfully");
+                
                 // Reset form
                 setRegisterFormData({
                     name: "",
@@ -91,12 +121,13 @@ export default function FeatureHead() {
                 closeRegisterModal();
             } else {
                 if (loadingToastId) dismissToast(loadingToastId);
-                showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
+                showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng kiểm tra console để xem chi tiết lỗi.", "Lỗi gửi thông tin");
+                console.error("❌ Form submission failed");
             }
         } catch (error) {
-            console.error("Error submitting form:", error);
+            console.error("❌ Error submitting form:", error);
             if (loadingToastId) dismissToast(loadingToastId);
-            showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
+            showError(`Lỗi: ${error instanceof Error ? error.message : 'Unknown error'}`, "Lỗi gửi thông tin");
         }
     };
 
@@ -104,11 +135,15 @@ export default function FeatureHead() {
         let loadingToastId: string | undefined;
 
         try {
+            console.log("🚀 Starting buy form submission...");
+            
             // Validate required fields
             if (!buyFormData.name || !buyFormData.email || !buyFormData.phone) {
                 showError("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)", "Thiếu thông tin");
                 return;
             }
+
+            console.log("✅ Form validation passed");
 
             // Show loading notification
             loadingToastId = showLoading("Đang gửi thông tin...", "Vui lòng chờ");
@@ -125,12 +160,16 @@ export default function FeatureHead() {
                 source: "buy"
             };
 
+            console.log("📤 Sending data to Google Sheets:", googleSheetsData);
+
             // Submit to Google Sheets
             const success = await submitToGoogleSheetsAPI(googleSheetsData);
 
             if (success) {
                 if (loadingToastId) dismissToast(loadingToastId);
                 showSuccess("Cảm ơn bạn đã quan tâm! Chúng tôi sẽ liên hệ lại sớm nhất để tư vấn gói phù hợp.", "Đăng ký thành công!");
+                console.log("✅ Form submitted successfully");
+                
                 // Reset form
                 setBuyFormData({
                     name: "",
@@ -143,12 +182,13 @@ export default function FeatureHead() {
                 closeBuyModal();
             } else {
                 if (loadingToastId) dismissToast(loadingToastId);
-                showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
+                showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng kiểm tra console để xem chi tiết lỗi.", "Lỗi gửi thông tin");
+                console.error("❌ Form submission failed");
             }
         } catch (error) {
-            console.error("Error submitting form:", error);
+            console.error("❌ Error submitting form:", error);
             if (loadingToastId) dismissToast(loadingToastId);
-            showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
+            showError(`Lỗi: ${error instanceof Error ? error.message : 'Unknown error'}`, "Lỗi gửi thông tin");
         }
     };
 
@@ -457,42 +497,74 @@ export default function FeatureHead() {
                     <div className="w-full mx-auto">
                         <div>
                             {/* Section Title */}
-                            <div className="text-center flex items-center justify-center">
-                                <SectionTitle
-                                    title="Quản trị trường học thông minh-Dữ liệu kết nối ba chiều: Sở ngành – Trường – Gia đình"
-                                    paragraph=" Toàn bộ nghiệp vụ vận hành, giảng dạy, khảo thí, tài chính và kết nối dữ liệu "
-                                />
-                            </div>
+                          
 
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                                {/* Đăng ký ngay button - simplified for mobile */}
                                 <button
-                                    onClick={openRegisterModal}
-                                    className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-xl shadow-lg active:shadow-xl active:scale-95 transition-all duration-200 overflow-hidden touch-manipulation"
-                                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        console.log('Register button clicked on mobile');
+                                        handleRegisterClick();
+                                    }}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        console.log('Register button touched on mobile');
+                                        handleRegisterClick();
+                                    }}
+                                    className="relative inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 w-full sm:w-auto min-h-[50px] cursor-pointer"
+                                    style={{ 
+                                        WebkitTapHighlightColor: 'transparent',
+                                        WebkitTouchCallout: 'none',
+                                        WebkitUserSelect: 'none',
+                                        userSelect: 'none',
+                                        touchAction: 'manipulation'
+                                    }}
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 opacity-0 group-active:opacity-100 transition-opacity duration-200"></div>
-
-                                    <div className="relative flex items-center space-x-2">
-                                        <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-active:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="flex items-center space-x-2 sm:space-x-3">
+                                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                         </svg>
                                         <span>Đăng ký ngay</span>
-                                        <svg className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 group-active:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
                                     </div>
                                 </button>
 
+                                {/* Nhận báo giá button - simplified for mobile */}
                                 <button
-                                    onClick={openBuyModal}
-                                    className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-xl shadow-lg active:shadow-xl active:scale-95 transition-all duration-200 touch-manipulation"
-                                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        console.log('Buy button clicked on mobile');
+                                        handleBuyClick();
+                                    }}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        console.log('Buy button touched on mobile');
+                                        handleBuyClick();
+                                    }}
+                                    className="relative inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 w-full sm:w-auto min-h-[50px] cursor-pointer"
+                                    style={{ 
+                                        WebkitTapHighlightColor: 'transparent',
+                                        WebkitTouchCallout: 'none',
+                                        WebkitUserSelect: 'none',
+                                        userSelect: 'none',
+                                        touchAction: 'manipulation'
+                                    }}
                                 >
-                                    <div className="relative flex items-center space-x-2">
-                                        <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-active:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="flex items-center space-x-2 sm:space-x-3">
+                                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                         </svg>
                                         <span>Nhận báo giá</span>
+                                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
                                     </div>
                                 </button>
                             </div>

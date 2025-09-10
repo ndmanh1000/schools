@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "../Common/SectionTitle";
 import { CommonModal, useModal } from "../Modal/CommonModal";
@@ -249,13 +249,46 @@ const Video = () => {
   ];
 
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const selectedReason = reasons[selectedIndex];
+
+  // Auto-switch tabs functionality
+  useEffect(() => {
+    if (isAutoPlaying) {
+      intervalRef.current = setInterval(() => {
+        setSelectedIndex((prevIndex) => (prevIndex + 1) % reasons.length);
+      }, 4000); // Switch every 4 seconds
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isAutoPlaying, reasons.length]);
+
+  // Pause auto-play when user manually selects a tab
+  const handleTabClick = (index: number) => {
+    setSelectedIndex(index);
+    setIsAutoPlaying(false);
+    
+    // Resume auto-play after 10 seconds of inactivity
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 10000);
+  };
 
   return (
     <section className="relative z-50 py-16 md:py-20 lg:py-28 overflow-hidden">
       <div className="container">
         {/* Section Title with enhanced animation */}
         <motion.div
+          className="wow fadeInUp"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -269,9 +302,9 @@ const Video = () => {
           />
         </motion.div>
 
-        {/* Enhanced Tabs with staggered animation */}
+        {/* Enhanced Tabs with staggered animation and auto-play indicator */}
         <motion.div
-          className="mb-12 flex flex-wrap justify-center gap-3 sm:gap-4"
+          className="mb-12 flex flex-wrap justify-center gap-3 sm:gap-4 wow fadeInUp"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -280,7 +313,7 @@ const Video = () => {
           {reasons.map((reason, index) => (
             <motion.button
               key={index}
-              onClick={() => setSelectedIndex(index)}
+              onClick={() => handleTabClick(index)}
               className={`relative rounded-full border px-4 py-3 text-xs sm:text-sm font-medium transition-all duration-300 md:text-base md:px-6 transform hover:scale-105 active:scale-95 min-h-[48px] flex items-center justify-center text-center
                 ${selectedIndex === index
                   ? "border-primary bg-primary text-white shadow-lg shadow-primary/25"
@@ -299,14 +332,36 @@ const Video = () => {
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <span className="relative z-10">{reason.title}</span>
+              <span className="relative z-10 flex items-center gap-2">
+                {reason.title}
+                {selectedIndex === index && isAutoPlaying && (
+                  <motion.div
+                    className="w-2 h-2 bg-white rounded-full"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                )}
+              </span>
             </motion.button>
           ))}
         </motion.div>
 
+        {/* Auto-play status indicator */}
+        <motion.div
+          className="flex justify-center mb-6 wow fadeInUp"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center justify-center px-3 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}></div>
+          </div>
+        </motion.div>
+
         {/* Enhanced Animated Reason Display */}
         <motion.div
-          className="mx-auto max-w-4xl"
+          className="mx-auto max-w-4xl wow fadeInUp"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -354,7 +409,7 @@ const Video = () => {
 
         {/* Enhanced CTA Button */}
         <motion.div
-          className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mt-12 xl:mt-16"
+          className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mt-12 xl:mt-16 wow fadeInUp"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}

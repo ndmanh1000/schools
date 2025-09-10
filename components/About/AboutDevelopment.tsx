@@ -18,7 +18,7 @@ export default function AboutDevelopment() {
                     <img
                         src={gth.src}
                         alt="Quá trình phát triển DSchool"
-                        className="w-full object-cover md:max-w-[70%] h-auto"
+                        className="w-full object-cover h-auto"
                     />
                 </div>
             </div>

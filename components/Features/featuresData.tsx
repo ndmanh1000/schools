@@ -17,7 +17,7 @@ const featuresData: Feature[] = [
       "Quản lý toàn bộ hệ thống trong một nền tảng duy nhất – giảm thiểu giấy tờ và rườm rà.",
   },
   {
-    id: 1,
+    id: 2,
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" className="fill-current">
         <path
@@ -32,7 +32,7 @@ const featuresData: Feature[] = [
       "Nền tảng học trực tuyến linh hoạt, giúp học sinh tiếp cận bài giảng và tài liệu từ mọi thiết bị.",
   },
   {
-    id: 1,
+    id: 3,
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" className="fill-current">
         <path
@@ -47,7 +47,7 @@ const featuresData: Feature[] = [
       "Tự động hóa thi cử và tuyển sinh, giúp đánh giá công bằng và giảm thiểu gian lận.",
   },
   {
-    id: 1,
+    id: 4,
     icon: (
       <svg width="40" height="42" viewBox="0 0 40 42" className="fill-current">
         <path

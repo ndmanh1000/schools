@@ -9,9 +9,7 @@ const AboutSectionFour = () => {
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
-              <p className="py-5 text-2xl font-semibold text-black">
-                -Phụ huynh,học sinh
-              </p>
+             
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
                 -Theo dõi kết quả học tập, chuyên cần, khen thưởng, kỷ luật và
                 học phí rõ ràng

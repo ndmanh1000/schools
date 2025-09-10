@@ -53,7 +53,7 @@ export default function AboutCoreValues() {
     ];
 
     return (
-        <section id="core-values" className="py-16 md:py-20 lg:py-28 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+        <section id="core-values" className="mt-4 md:mt-6">
             {/* Background decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-indigo-300/30 rounded-full blur-2xl animate-pulse"></div>
@@ -64,7 +64,7 @@ export default function AboutCoreValues() {
 
             <div className="container relative z-10">
                 {/* Section Title */}
-                <div className="flex items-center justify-center text-center mb-16">
+                <div className="flex items-center justify-center text-center">
                     <SectionTitle
                         title="Giá trị cốt lõi"
                         paragraph=""

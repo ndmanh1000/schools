@@ -23,68 +23,81 @@ export default function AboutMissionVision() {
                     />
                 </div>
 
-                {/* Mission & Vision Cards - Horizontal Layout */}
-                <div className="space-y-16">
-                    {/* Mission Section */}
-                    <div className="relative">
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                            {/* Mission Icon & Title */}
-                            <div className="lg:col-span-1 text-center lg:text-left">
-                                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-lg mb-6 transform hover:scale-110 transition-transform duration-300">
-                                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
+                {/* Mission & Vision Layout - Image on one side, texts on other side */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    {/* Left Side - Mission & Vision Texts */}
+                    <div className="space-y-8 order-2 md:order-1">
+                        {/* Mission Section */}
+                        <div className="relative">
+                            <div className="flex items-start space-x-4">
+                                {/* Mission Icon */}
+                                <div className="flex-shrink-0">
+                                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                                    🎯 Sứ mệnh
-                                </h3>
-                                <div className="w-16 h-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full mx-auto lg:mx-0"></div>
+                                
+                                {/* Mission Content */}
+                                <div className="flex-1">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                                        🎯 Sứ mệnh
+                                    </h3>
+                                    <div className="w-12 h-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full mb-4"></div>
+                                    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-emerald-200/50 dark:border-emerald-700/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                                            <span className="font-bold text-emerald-600 dark:text-emerald-400">DSchool</span> đồng hành cùng nhà trường trong hành trình chuyển đổi số, giúp mọi hoạt động từ giảng dạy, quản lý, đến kết nối phụ huynh – học sinh trở nên <span className="font-semibold text-teal-600 dark:text-teal-400">đơn giản, minh bạch và hiệu quả</span>.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
-                            {/* Mission Content */}
-                            <div className="lg:col-span-2">
-                                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl p-8 lg:p-10 border border-emerald-200/50 dark:border-emerald-700/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                                    <p className="text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                                        <span className="font-bold text-emerald-600 dark:text-emerald-400">DSchool</span> đồng hành cùng nhà trường trong hành trình chuyển đổi số, giúp mọi hoạt động từ giảng dạy, quản lý, đến kết nối phụ huynh – học sinh trở nên <span className="font-semibold text-teal-600 dark:text-teal-400">đơn giản, minh bạch và hiệu quả</span>.
-                                    </p>
+                        {/* Vision Section */}
+                        <div className="relative">
+                            <div className="flex items-start space-x-4">
+                                {/* Vision Icon */}
+                                <div className="flex-shrink-0">
+                                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                {/* Vision Content */}
+                                <div className="flex-1">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                                        🔮 Tầm nhìn
+                                    </h3>
+                                    <div className="w-12 h-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-full mb-4"></div>
+                                    <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-6 border border-orange-200/50 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                                            <span className="font-bold text-orange-600 dark:text-orange-400">DSchool</span> hướng tới trở thành <span className="font-semibold text-red-600 dark:text-red-400">nền tảng số chuẩn</span> cho các trường học tại Việt Nam, là cầu nối dữ liệu chặt chẽ giữa <span className="font-semibold text-orange-600 dark:text-orange-400">Sở/Ban ngành – Nhà trường – Gia đình</span>.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Image Section - Between Mission and Vision */}
-                    <div className="flex justify-center">
-                        <img
-                            src={miss.src}
-                            alt="Mission & Vision"
-                            className="w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"
-                        />
-                    </div>
-
-                    {/* Vision Section */}
-                    <div className="relative">
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                            {/* Vision Content */}
-                            <div className="lg:col-span-2 lg:order-1">
-                                <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl p-8 lg:p-10 border border-orange-200/50 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                                    <p className="text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                                        <span className="font-bold text-orange-600 dark:text-orange-400">DSchool</span> hướng tới trở thành <span className="font-semibold text-red-600 dark:text-red-400">nền tảng số chuẩn</span> cho các trường học tại Việt Nam, là cầu nối dữ liệu chặt chẽ giữa <span className="font-semibold text-orange-600 dark:text-orange-400">Sở/Ban ngành – Nhà trường – Gia đình</span>.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Vision Icon & Title */}
-                            <div className="lg:col-span-1 lg:order-2 text-center lg:text-left">
-                                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl shadow-lg mb-6 transform hover:scale-110 transition-transform duration-300">
-                                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                                    🔮 Tầm nhìn
-                                </h3>
-                                <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-full mx-auto lg:mx-0"></div>
+                    {/* Right Side - Image */}
+                    <div className="order-1 md:order-2">
+                        <div className="relative">
+                            <div className="absolute -inset-4 bg-gradient-to-r from-emerald-400 via-orange-400 to-red-400 rounded-3xl opacity-10 blur-xl"></div>
+                            <div className="">
+                                <img
+                                    src={miss.src}
+                                    alt="Mission & Vision"
+                                    className="w-full h-auto hover:scale-105 transition-transform duration-300"
+                                />
+                                
+                                {/* Decorative elements */}
+                                <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-400 rounded-full opacity-60 animate-pulse"></div>
+                                <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-orange-400 rounded-full opacity-60 animate-pulse delay-1000"></div>
+                                <div className="absolute top-1/2 -left-2 w-2 h-2 bg-red-400 rounded-full opacity-60 animate-pulse delay-500"></div>
                             </div>
                         </div>
                     </div>

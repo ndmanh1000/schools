@@ -6,12 +6,10 @@ export default function AboutHeader() {
     return (
         <section id="about" className="pt-16 md:pt-20 lg:pt-28 md:mt-20 mt-14 md:mb-10 mb-10">
             <div className="container">
-                <div className="flex items-center justify-center text-center">
-                    <SectionTitle title="Digital School - Giải pháp chuyển đổi số toàn diện nhất dành cho trường học" paragraph="TÍch hợp quản lý vận hành, học tập, khảo thí và kết nối dữ liệu với Sở/Ban ngành, giúp nhà trường vận hành tinh gọn và minh bạch" />
-                </div>
+              
 
                 {/* Banner Image Section - Responsive */}
-                <div>
+                <div className="wow fadeInUp">
                     <div className="relative w-full">
                         {/* Placeholder for banner image - Replace with your actual image */}
                         <div className="relative w-full h-auto rounded-lg md:rounded-xl lg:rounded-2xl ">

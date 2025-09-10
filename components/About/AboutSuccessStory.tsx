@@ -26,14 +26,21 @@ export default function AboutSuccessStory() {
                                 {/* Profile Image */}
                                 <div className="flex flex-col items-center text-center space-y-6">
                                     <div className="relative">
-                                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full opacity-20 animate-pulse"></div>
+                                        {/* Circular border frame */}
+                                        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-700 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 opacity-20 animate-pulse"></div>
+                                        
+                                        {/* Larger image that overflows the circle */}
                                         <img
                                             src={atuan.src}
                                             alt="Mr. Trần Anh Tuấn"
-                                            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white dark:border-gray-700 shadow-lg hover:scale-105 transition-transform duration-300"
+                                            className="absolute -top-16 left-1/2 w-52 h-52 md:w-60 md:h-56  object-cover transform -translate-x-1/2 -translate-y-1/2 translate-y-2 hover:scale-110 transition-all duration-500 z-10"
+                                            style={{
+                                                filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.4))'
+                                            }}
                                         />
+                                        
                                         {/* Status indicator */}
-                                        <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 animate-pulse"></div>
+                                        <div className="absolute bottom-1 right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 animate-pulse z-20"></div>
                                     </div>
 
                                     {/* Founder Info */}

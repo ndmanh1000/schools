@@ -134,21 +134,21 @@ const Contact: React.FC<ContactProps> = ({
             </div>
 
             <div className="container relative z-10">
-                <div className="-mx-4 flex flex-wrap items-stretch">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
                     <motion.div
-                        className="w-full px-4 lg:w-1/2"
+                        className="flex"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
                         <div
-                            className="wow fadeInUp mb-12 rounded-2xl bg-white/80 backdrop-blur-sm px-8 py-11 shadow-xl border border-gray-200/50 dark:bg-gray-dark/80 dark:border-gray-700/50 sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px] h-full"
+                            className="wow fadeInUp rounded-2xl bg-white/80 backdrop-blur-sm px-8 py-11 shadow-xl border border-gray-200/50 dark:bg-gray-dark/80 dark:border-gray-700/50 sm:p-[55px] lg:px-8 xl:p-[55px] w-full flex flex-col min-h-[600px]"
                             data-wow-delay=".15s"
                         >
                             {showForm ? (
-                                <form onSubmit={handleSubmit}>
-                                    <div className="-mx-4 flex flex-wrap">
+                                <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
+                                    <div className="-mx-4 flex flex-wrap flex-1">
                                         {/* Họ và tên */}
                                         <motion.div
                                             className="w-full px-4 md:w-1/2"
@@ -305,7 +305,7 @@ const Contact: React.FC<ContactProps> = ({
 
                                         {/* Nút gửi */}
                                         <motion.div
-                                            className="w-full px-4"
+                                            className="w-full px-4 mt-auto"
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.4, delay: 0.9 }}
@@ -340,22 +340,24 @@ const Contact: React.FC<ContactProps> = ({
                                     </div>
                                 </form>
                             ) : (
-                                <p className="text-center text-lg font-medium text-green-600">
-                                    ✅ Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.
-                                </p>
+                                <div className="flex-1 flex items-center justify-center">
+                                    <p className="text-center text-lg font-medium text-green-600">
+                                        ✅ Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.
+                                    </p>
+                                </div>
                             )}
                         </div>
                     </motion.div>
 
                     {/* Cột phải */}
                     <motion.div
-                        className="w-full px-4 lg:w-1/2"
+                        className="flex"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        <div className="h-full flex items-center justify-cente mt-4">
+                        <div className="w-full flex items-center justify-center min-h-[600px]">
                             <motion.img
                                 src={cskkkk.src}
                                 alt="cskkkk"
