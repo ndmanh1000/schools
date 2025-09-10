@@ -107,7 +107,7 @@ export function CommonModal({
         className={`relative w-full ${sizeClasses[size]} modal-animate`}
         style={{ zIndex: 999999 }}
       >
-        <div className="bg-white rounded-lg shadow-xl dark:bg-gray-800 max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+        <div className="bg-white rounded-lg shadow-xl dark:bg-gray-800 max-h-[80vh] sm:max-h-[90vh] overflow-y-auto">
           {/* Header */}
           <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
             <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
