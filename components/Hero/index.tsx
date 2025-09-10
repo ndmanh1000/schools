@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { CommonModal, useModal } from "../Modal/CommonModal";
 import { submitToGoogleSheetsAPI, FormData as GoogleSheetsFormData } from "../../lib/googleSheets";
+import { showSuccess, showError, showInfo, showLoading, dismissToast } from "../Common/NotificationToast";
 
 const Hero = () => {
   const { isOpen: isBuyModalOpen, openModal: openBuyModal, closeModal: closeBuyModal } = useModal();
@@ -24,14 +25,19 @@ const Hero = () => {
   };
 
   const handleSubmit = async () => {
+    let loadingToastId: string | undefined;
+
     try {
       console.log("🚀 Hero: Starting form submission...");
 
       // Validate required fields
       if (!formData.name || !formData.email || !formData.phone) {
-        alert("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)");
+        showError("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)", "Thiếu thông tin");
         return;
       }
+
+      // Show loading notification
+      loadingToastId = showLoading("Đang gửi thông tin...", "Vui lòng chờ");
 
       // Prepare data for Google Sheets
       const googleSheetsData: GoogleSheetsFormData = {
@@ -53,7 +59,8 @@ const Hero = () => {
       console.log("✅ Hero: Submission result:", success);
 
       if (success) {
-        alert("Cảm ơn bạn đã quan tâm! Chúng tôi sẽ liên hệ lại sớm nhất để tư vấn gói phù hợp.");
+        if (loadingToastId) dismissToast(loadingToastId);
+        showSuccess("Cảm ơn bạn đã quan tâm! Chúng tôi sẽ liên hệ lại sớm nhất để tư vấn gói phù hợp.", "Đăng ký thành công!");
         // Reset form
         setFormData({
           name: "",
@@ -65,11 +72,13 @@ const Hero = () => {
         });
         closeBuyModal();
       } else {
-        alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+        if (loadingToastId) dismissToast(loadingToastId);
+        showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+      if (loadingToastId) dismissToast(loadingToastId);
+      showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
     }
   };
 
@@ -87,9 +96,15 @@ const Hero = () => {
   };
 
   const buyModalContent = (
-    <div className="space-y-4">
+    <div className="space-y-6">
+      {/* Header with animated icon */}
       <div className="text-center">
-        <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+        <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-full flex items-center justify-center mb-4 animate-pulse-slow">
+          <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           🎉 Đăng ký mua gói dịch vụ
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -98,7 +113,7 @@ const Hero = () => {
       </div>
 
       <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* Họ và tên */}
           <div>
             <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
@@ -203,13 +218,22 @@ const Hero = () => {
             className="w-full resize-none rounded-sm border border-stroke bg-[#f8f8f8] px-4 py-2 text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           />
         </div>
+
+        {/* Submit Button */}
+        <div className="flex justify-center pt-4">
+          <button
+            type="submit"
+            className="w-full sm:w-auto px-8 py-3 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
+          >
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+            Đăng ký ngay
+          </button>
+        </div>
       </form>
 
-      <div className="rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20">
-        <p className="text-xs text-blue-800 dark:text-blue-200">
-          💡 <strong>Cam kết:</strong> Thông tin của bạn được bảo mật tuyệt đối và chỉ sử dụng để tư vấn dịch vụ.
-        </p>
-      </div>
+
     </div>
   );
 
@@ -248,6 +272,9 @@ const Hero = () => {
                     Đăng ký trải nghiệm
                   </a>
                 </div>
+
+                {/* Test Notification Button - Remove after testing */}
+
               </div>
             </div>
           </div>
@@ -498,12 +525,13 @@ const Hero = () => {
       <CommonModal
         isOpen={isBuyModalOpen}
         onClose={closeBuyModal}
-        title="Đăng ký mua gói dịch vụ"
+        title=""
         content={buyModalContent}
-        primaryButtonText="Gửi đăng ký"
-        secondaryButtonText="Hủy"
-        onPrimaryClick={handleSubmit}
+        primaryButtonText=""
+        secondaryButtonText=""
+        onPrimaryClick={() => { }}
         size="lg"
+        hideFooter={true}
       />
     </>
   );

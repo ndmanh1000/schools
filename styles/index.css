@@ -165,4 +165,150 @@
   .seam-drift {
     animation: dash-move 30s linear infinite;
   }
+
+  /* React Hot Toast Styles */
+  [data-sonner-toaster] {
+    z-index: 9999999 !important;
+  }
+
+  [data-sonner-toast] {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  [data-sonner-toast]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Dark mode toast styles */
+  .dark [data-sonner-toast] {
+    background: rgba(17, 24, 39, 0.95) !important;
+    border: 1px solid rgba(75, 85, 99, 0.3) !important;
+    color: #F9FAFB !important;
+  }
+
+  /* Alternative selectors for react-hot-toast */
+  .go3958317564,
+  .go3958317564>div,
+  [data-hot-toast],
+  [data-hot-toast]>div {
+    z-index: 9999999 !important;
+  }
+
+  .go3958317564>div,
+  [data-hot-toast]>div {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .go3958317564>div:hover,
+  [data-hot-toast]>div:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Dark mode toast styles */
+  .dark .go3958317564>div,
+  .dark [data-hot-toast]>div {
+    background: rgba(17, 24, 39, 0.95) !important;
+    border: 1px solid rgba(75, 85, 99, 0.3) !important;
+    color: #F9FAFB !important;
+  }
+
+  /* Custom toast animations */
+  @keyframes toast-enter {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes toast-exit {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  /* Modal animations */
+  @keyframes modal-bounce {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) translateY(-50px);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.05) translateY(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes modal-fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .modal-animate {
+    animation: modal-bounce 0.4s ease-out;
+  }
+
+  .modal-backdrop {
+    animation: modal-fade-in 0.3s ease-out;
+  }
+
+  /* Button hover effects */
+  .btn-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Pulse animation for icons */
+  @keyframes pulse-slow {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+  }
 }

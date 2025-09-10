@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "../Common/SectionTitle";
 import { CommonModal, useModal } from "../Modal/CommonModal";
 import { submitToGoogleSheetsAPI, FormData as GoogleSheetsFormData } from "../../lib/googleSheets";
+import { showSuccess, showError, showInfo, showLoading, dismissToast } from "../Common/NotificationToast";
 
 const Video = () => {
   const { isOpen: isRegisterModalOpen, openModal: openRegisterModal, closeModal: closeRegisterModal } = useModal();
@@ -31,12 +32,17 @@ const Video = () => {
   };
 
   const handleSubmit = async () => {
+    let loadingToastId: string | undefined;
+
     try {
       // Validate required fields
       if (!formData.name || !formData.email || !formData.phone) {
-        alert("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)");
+        showError("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)", "Thiếu thông tin");
         return;
       }
+
+      // Show loading notification
+      loadingToastId = showLoading("Đang gửi thông tin...", "Vui lòng chờ");
 
       // Prepare data for Google Sheets
       const googleSheetsData: GoogleSheetsFormData = {
@@ -54,7 +60,8 @@ const Video = () => {
       const success = await submitToGoogleSheetsAPI(googleSheetsData);
 
       if (success) {
-        alert("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.");
+        if (loadingToastId) dismissToast(loadingToastId);
+        showSuccess("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.", "Đăng ký thành công!");
         // Reset form
         setFormData({
           name: "",
@@ -66,27 +73,35 @@ const Video = () => {
         });
         closeRegisterModal();
       } else {
-        alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+        if (loadingToastId) dismissToast(loadingToastId);
+        showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+      if (loadingToastId) dismissToast(loadingToastId);
+      showError("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.", "Lỗi gửi thông tin");
     }
   };
 
   const registerModalContent = (
-    <div className="space-y-4">
+    <div className="space-y-4 sm:space-y-6">
+      {/* Header with animated icon */}
       <div className="text-center">
-        <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+        <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-full flex items-center justify-center mb-3 sm:mb-4 animate-pulse-slow">
+          <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
           🚀 Đăng ký trải nghiệm miễn phí
         </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
           Điền thông tin để nhận tư vấn và demo miễn phí
         </p>
       </div>
 
-      <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <form className="space-y-3 sm:space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
           {/* Họ và tên */}
           <div>
             <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
@@ -191,13 +206,22 @@ const Video = () => {
             className="w-full resize-none rounded-sm border border-stroke bg-[#f8f8f8] px-4 py-2 text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           />
         </div>
+
+        {/* Submit Button */}
+        <div className="flex justify-center pt-3 sm:pt-4">
+          <button
+            type="submit"
+            className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm font-medium text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg hover:from-green-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
+          >
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+            Đăng ký trải nghiệm
+          </button>
+        </div>
       </form>
 
-      <div className="rounded-lg bg-green-50 p-3 dark:bg-green-900/20">
-        <p className="text-xs text-green-800 dark:text-green-200">
-          ✅ <strong>Cam kết:</strong> Thông tin của bạn được bảo mật tuyệt đối và chỉ sử dụng để tư vấn dịch vụ.
-        </p>
-      </div>
+
     </div>
   );
 
@@ -354,6 +378,16 @@ const Video = () => {
             </span>
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#1e40af] to-[#1e3a8a] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
           </motion.button>
+
+          {/* Test Notification Button - Remove after testing */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-4"
+          >
+
+          </motion.div>
         </motion.div>
       </div>
 
@@ -396,12 +430,13 @@ const Video = () => {
         <CommonModal
           isOpen={isRegisterModalOpen}
           onClose={closeRegisterModal}
-          title="Đăng ký trải nghiệm miễn phí"
+          title=""
           content={registerModalContent}
-          primaryButtonText="Gửi đăng ký"
-          secondaryButtonText="Hủy"
-          onPrimaryClick={handleSubmit}
-          size="lg"
+          primaryButtonText=""
+          secondaryButtonText=""
+          onPrimaryClick={() => { }}
+          size="md"
+          hideFooter={true}
         />
       </div>
     </section>

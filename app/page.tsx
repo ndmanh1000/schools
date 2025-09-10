@@ -12,6 +12,7 @@ import Video from "@/components/Video";
 import { Metadata } from "next";
 import AboutSectionThree from "@/components/About/AboutSectionThree";
 import AboutSectionFour from "@/components/About/AboutSectionFour";
+import NotificationTest from "@/components/Test/NotificationTest";
 
 
 export const metadata: Metadata = {
@@ -37,7 +38,8 @@ export default function Home() {
       {/* <Blog /> */}
       <Contact />
 
-      {/* Test Modal - Remove this after testing */}
+      {/* Test Notification - Remove this after testing */}
+
 
     </>
   );
