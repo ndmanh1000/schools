@@ -16,8 +16,8 @@ import NotificationTest from "@/components/Test/NotificationTest";
 
 
 export const metadata: Metadata = {
-  title: "Free Next.js Template for Startup and SaaS",
-  description: "This is Home for Startup Nextjs Template",
+  title: "DSchool - Nền Tảng Dành Cho Trường Học Số",
+  description: "DSchool là nền tảng dành cho trường học số, giúp bạn quản lý dữ liệu tập trung giúp bạn tổ chức, truy cập và phân tích dữ liệu một cách hiệu quả.",
   // other metadata
 };
 

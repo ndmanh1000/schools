@@ -10,8 +10,8 @@ import AboutDevelopment from "@/components/About/AboutDevelopment";
 import Contact from "@/components/Contact";
 
 export const metadata: Metadata = {
-  title: "About Page | Free Next.js Template for Startup and SaaS",
-  description: "This is About Page for Startup Nextjs Template",
+  title: "Giới thiệu cho bạn những góc nhìn khái quát nhất của Dschool",
+  description: " ",
   // other metadata
 };
 

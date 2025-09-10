@@ -10,8 +10,8 @@ import FeatureFaq from "@/components/Features/FeatureFaq";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Blog Page for Startup Nextjs Template",
+  title: "Tính năng | DSchool - Nền Tảng Dành Cho Trường Học Số",
+  description: "DSchool là nền tảng dành cho trường học số, giúp bạn quản lý dữ liệu tập trung giúp bạn tổ chức, truy cập và phân tích dữ liệu một cách hiệu quả.",
   // other metadata
 };
 
