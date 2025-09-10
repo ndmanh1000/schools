@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
+import bangiamhieu from "../../public/images/about/bangiamhieu.webp";
 
 const AboutSectionOne = () => {
   return (
@@ -20,17 +21,12 @@ const AboutSectionOne = () => {
                 data-wow-delay=".15s"
               >
                 <Image
-                  src="/images/about/about-image-2.svg"
+                  src={bangiamhieu.src}
                   alt="about image"
                   fill
                   className="drop-shadow-three dark:hidden dark:drop-shadow-none"
                 />
-                <Image
-                  src="/images/about/about-image-2-dark.svg"
-                  alt="about image"
-                  fill
-                  className="hidden drop-shadow-three dark:block dark:drop-shadow-none"
-                />
+
               </div>
             </div>
             <div className="w-full px-4 lg:w-1/2">
