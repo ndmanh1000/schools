@@ -85,9 +85,9 @@ export function CommonModal({
 
   return (
     <div
-      className="fixed inset-0 z-[9999999] flex items-center justify-center p-2 sm:p-4 animate-fadeIn"
+      className="fixed inset-0 z-[999999] flex items-center justify-center p-2 sm:p-4 animate-fadeIn"
       style={{
-        zIndex: 9999999,
+        zIndex: 999999,
         position: 'fixed',
         top: 0,
         left: 0,
@@ -99,13 +99,13 @@ export function CommonModal({
       <div
         className="absolute inset-0 bg-black bg-opacity-50 transition-opacity modal-backdrop"
         onClick={onClose}
-        style={{ zIndex: 9999999 }}
+        style={{ zIndex: 999998 }}
       />
 
       {/* Modal */}
       <div
         className={`relative w-full ${sizeClasses[size]} modal-animate`}
-        style={{ zIndex: 9999999 }}
+        style={{ zIndex: 999999 }}
       >
         <div className="bg-white rounded-lg shadow-xl dark:bg-gray-800 max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
           {/* Header */}

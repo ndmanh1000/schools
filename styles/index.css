@@ -4,6 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Toast Notification Styles */
+.go318386087 {
+  z-index: 9999999 !important;
+}
+
+.go318386087 > div {
+  z-index: 9999999 !important;
+}
+
+/* Ensure toast appears above all modals */
+[data-sonner-toaster] {
+  z-index: 9999999 !important;
+}
+
+.react-hot-toast {
+  z-index: 9999999 !important;
+}
+
+/* Toast container */
+[data-hot-toast] {
+  z-index: 9999999 !important;
+}
+
+[data-hot-toast] > div {
+  z-index: 9999999 !important;
+}
+
 @layer base {
   body {
     font-family: "Inter", sans-serif;

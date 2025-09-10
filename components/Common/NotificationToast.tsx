@@ -17,25 +17,68 @@ export const showNotification = ({
 }: NotificationOptions) => {
   const fullMessage = title ? `${title}: ${message}` : message;
 
+  const baseStyle = {
+    zIndex: 9999999,
+    fontSize: '14px',
+    fontWeight: '500',
+    maxWidth: '400px',
+    padding: '16px 20px',
+    borderRadius: '12px',
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
+    backdropFilter: 'blur(15px)',
+  };
+
   switch (type) {
     case "success":
-      return toast.success(fullMessage, { duration });
+      return toast.success(fullMessage, { 
+        duration,
+        style: {
+          ...baseStyle,
+          background: 'rgba(16, 185, 129, 0.1)',
+          border: '1px solid rgba(16, 185, 129, 0.3)',
+          color: '#065F46',
+        }
+      });
     case "error":
-      return toast.error(fullMessage, { duration });
+      return toast.error(fullMessage, { 
+        duration,
+        style: {
+          ...baseStyle,
+          background: 'rgba(239, 68, 68, 0.1)',
+          border: '1px solid rgba(239, 68, 68, 0.3)',
+          color: '#991B1B',
+        }
+      });
     case "warning":
       return toast(fullMessage, {
         icon: "⚠️",
         duration,
         style: {
-          background: "#FEF3C7",
-          color: "#92400E",
-          border: "1px solid #F59E0B",
+          ...baseStyle,
+          background: 'rgba(245, 158, 11, 0.1)',
+          border: '1px solid rgba(245, 158, 11, 0.3)',
+          color: '#92400E',
         },
       });
     case "loading":
-      return toast.loading(fullMessage);
+      return toast.loading(fullMessage, {
+        style: {
+          ...baseStyle,
+          background: 'rgba(59, 130, 246, 0.1)',
+          border: '1px solid rgba(59, 130, 246, 0.3)',
+          color: '#1E40AF',
+        }
+      });
     default:
-      return toast(fullMessage, { duration });
+      return toast(fullMessage, { 
+        duration,
+        style: {
+          ...baseStyle,
+          background: 'rgba(255, 255, 255, 0.98)',
+          border: '1px solid rgba(209, 213, 219, 0.3)',
+          color: '#374151',
+        }
+      });
   }
 };
 
