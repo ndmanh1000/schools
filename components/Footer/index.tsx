@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
                 </motion.h2>
                 <ul className="grid grid-cols-1 gap-4 md:gap-2 ">
                   <motion.li
-                    className="mb-2 text-base text-body-color dark:text-body-color-dark p-3 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
+                    className="mb-2 text-base text-body-color dark:text-body-color-dark"
                     whileHover={{ scale: 1.02, x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -104,15 +104,15 @@ const Footer: React.FC = () => {
                     <p className="text-sm">098 131 72 25</p>
                   </motion.li>
                   <motion.li
-                    className="mb-2 text-base text-body-color dark:text-body-color-dark p-3 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
+                    className="mb-2 text-base text-body-color dark:text-body-color-dark"
                     whileHover={{ scale: 1.02, x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
                     <p className="font-semibold text-primary">Email</p>
-                    <p className="text-sm">support@dschool.com.vn</p>
+                    <p className="text-sm break-words">support@dschool.com.vn</p>
                   </motion.li>
                   <motion.li
-                    className="mb-2 text-base text-body-color dark:text-body-color-dark p-3 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
+                    className="mb-2 text-base text-body-color dark:text-body-color-dark"
                     whileHover={{ scale: 1.02, x: 5 }}
                     transition={{ duration: 0.2 }}
                   >

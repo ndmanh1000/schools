@@ -1,37 +1,160 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { submitToGoogleSheetsAPI, FormData as GoogleSheetsFormData } from "../../lib/googleSheets";
+import { showSuccess, showError, showInfo, showLoading, dismissToast } from "../Common/NotificationToast";
 
 const NewsLatterBox = () => {
   const { theme } = useTheme();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    let loadingToastId: string | undefined;
+
+    try {
+      // Validate required fields
+      if (!formData.name.trim()) {
+        showError("Vui lòng nhập họ và tên", "Thiếu thông tin");
+        return;
+      }
+      if (!formData.email.trim()) {
+        showError("Vui lòng nhập email", "Thiếu thông tin");
+        return;
+      }
+
+      // Show loading notification
+      loadingToastId = showLoading("Đang đăng ký nhận tin...", "Vui lòng chờ");
+
+      // Prepare data for Google Sheets
+      const googleSheetsData: GoogleSheetsFormData = {
+        name: formData.name,
+        position: "",
+        email: formData.email,
+        phone: "",
+        organization: "",
+        message: "",
+        timestamp: new Date().toISOString(),
+        source: "newsletter"
+      };
+
+      // Submit to Google Sheets
+      const success = await submitToGoogleSheetsAPI(googleSheetsData);
+
+      if (success) {
+        if (loadingToastId) dismissToast(loadingToastId);
+        showSuccess("Đăng ký nhận tin thành công! Cảm ơn bạn đã quan tâm.", "Đăng ký thành công!");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+        });
+      } else {
+        if (loadingToastId) dismissToast(loadingToastId);
+        showError("Có lỗi xảy ra khi đăng ký. Vui lòng thử lại sau.", "Lỗi đăng ký");
+      }
+    } catch (error) {
+      console.error("Error submitting newsletter form:", error);
+      if (loadingToastId) dismissToast(loadingToastId);
+      showError("Có lỗi xảy ra khi đăng ký. Vui lòng thử lại sau.", "Lỗi đăng ký");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <div
-      className="wow fadeInUp relative z-10 rounded-sm bg-white p-8 shadow-three dark:bg-gray-dark sm:p-11 lg:p-8 xl:p-11"
+    <motion.div
+      className="wow fadeInUp relative z-10 rounded-2xl bg-white/80 backdrop-blur-sm p-8 shadow-xl border border-gray-200/50 dark:bg-gray-dark/80 dark:border-gray-700/50 sm:p-11 lg:p-8 xl:p-11"
       data-wow-delay=".2s"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
     >
-      <p className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-25">
+      <motion.p
+        className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-25"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
         Đăng ký nhận bản tin mới nhất
-      </p>
-      <div>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nhập tên của bạn"
-          className="mb-4 w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Nhập email cua bạn"
-          className="mb-4 w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-        />
-        <input
-          type="submit"
-          value="Đăng ký nhận tin"
-          className="rounded-md bg-[#053cc0] px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-        />
-      </div>
+      </motion.p>
+      <form onSubmit={handleSubmit}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Nhập tên của bạn"
+            className="mb-4 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-6 py-3 text-base text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 shadow-sm hover:shadow-md"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Nhập email của bạn"
+            className="mb-4 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-6 py-3 text-base text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 shadow-sm hover:shadow-md"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <motion.button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            {isSubmitting ? (
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Đang đăng ký...</span>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>Đăng ký nhận tin</span>
+              </div>
+            )}
+          </motion.button>
+        </motion.div>
+      </form>
 
       <div>
         <span className="absolute left-2 top-7">
@@ -249,7 +372,7 @@ const NewsLatterBox = () => {
           </svg>
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -362,7 +362,7 @@ const Video = () => {
         >
           <motion.button
             onClick={handleRegisterClick}
-            className="group relative rounded-xl bg-gradient-to-r from-[#053cc0] to-[#1e40af] px-10 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95"
+            className="group relative mt-4 rounded-xl bg-gradient-to-r from-[#053cc0] to-[#1e40af] px-10 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
