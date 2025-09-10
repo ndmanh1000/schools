@@ -3,6 +3,7 @@ import SingleFeature from "./SingleFeature";
 import featuresData from "./featuresData";
 import RadialFeatures from "./RadialFeatures";
 import trangchus2 from "../../public/images/logo/trangchus2.png";
+import Link from "next/link";
 
 const Features = () => {
   return (
@@ -70,15 +71,17 @@ const Features = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Button content */}
-                    <div className="relative flex items-center space-x-2">
-                      <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                      <span>Khám phá tính năng</span>
-                      <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
+                    <Link href="/feature">
+                      <div className="relative flex items-center space-x-2">
+                        <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <span>Khám phá tính năng</span>
+                        <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </Link>
 
                     {/* Shine effect */}
                     <div className="absolute inset-0 -top-2 -left-2 w-8 h-8 bg-white opacity-20 rounded-full transform -rotate-45 group-hover:translate-x-32 group-hover:translate-y-32 transition-transform duration-700"></div>

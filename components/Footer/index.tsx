@@ -2,6 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 // Import hình ảnh với kiểu StaticImageData
 import appstore from "../../public/images/footer/appstore.webp";
@@ -14,22 +15,39 @@ const Footer: React.FC = () => {
   return (
     <>
       <footer
-        className="wow fadeInUp relative z-10 bg-white pt-16 dark:bg-gray-dark md:pt-20 lg:pt-24"
+        className="wow fadeInUp relative z-10 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-16 md:pt-20 lg:pt-24 overflow-hidden"
         data-wow-delay=".1s"
       >
-        <div className="container">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-indigo-300/20 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-indigo-200/20 to-purple-300/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-br from-purple-200/20 to-pink-300/20 rounded-full blur-2xl animate-pulse delay-500"></div>
+          <div className="absolute top-1/2 right-1/3 w-20 h-20 bg-gradient-to-br from-green-200/20 to-blue-300/20 rounded-full blur-2xl animate-pulse delay-700"></div>
+        </div>
+        <div className="container relative z-10">
           <div className="grid grid-cols-1 gap-10 px-4 sm:grid-cols-2 lg:grid-cols-12">
-            <div className="lg:col-span-5">
+            <motion.div
+              className="lg:col-span-5"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               <div className="mb-12 max-w-[420px] lg:mb-16">
-                <div className="mb-8 inline-block">
+                <motion.div
+                  className="mb-8 inline-block"
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Image
                     src="/images/logo/logo-2.webp"
                     alt="logo"
                     width={100}
                     height={30}
-                    className="h-16 w-16 md:h-auto md:w-10"
+                    className="h-16 w-16 md:h-auto md:w-10 drop-shadow-lg"
                   />
-                </div>
+                </motion.div>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
                   Phần mềm quản lý trường học thế hệ mới, giúp nhà trường vận
                   hành tinh gọn, giảng dạy hiệu quả, khảo thí minh bạch, đồng
@@ -37,12 +55,15 @@ const Footer: React.FC = () => {
                   gia đình.
                 </p>
                 <div className="flex items-center">
-                  <a
+                  <motion.a
                     href="https://www.facebook.com/dschooltruonghoc4.0"
                     aria-label="social-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mr-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-body-color transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/10 hover:text-primary dark:bg-white/5 dark:text-body-color-dark"
+                    className="mr-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-600/10 text-body-color transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-indigo-600/20 hover:text-primary dark:bg-white/5 dark:text-body-color-dark shadow-lg hover:shadow-xl"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <span className="sr-only">Facebook</span>
                     <svg
@@ -53,142 +74,223 @@ const Footer: React.FC = () => {
                     >
                       <path d="M8.13643 7H6.78036H6.29605V6.43548V4.68548V4.12097H6.78036H7.79741C8.06378 4.12097 8.28172 3.89516 8.28172 3.55645V0.564516C8.28172 0.254032 8.088 0 7.79741 0H6.02968C4.11665 0 2.78479 1.58064 2.78479 3.92339V6.37903V6.94355H2.30048H0.65382C0.314802 6.94355 0 7.25403 0 7.70564V9.7379C0 10.1331 0.266371 10.5 0.65382 10.5H2.25205H2.73636V11.0645V16.7379C2.73636 17.1331 3.00273 17.5 3.39018 17.5H5.66644C5.81174 17.5 5.93281 17.4153 6.02968 17.3024C6.12654 17.1895 6.19919 16.9919 6.19919 16.8226V11.0927V10.5282H6.70771H7.79741C8.11222 10.5282 8.35437 10.3024 8.4028 9.96371V9.93548V9.90726L8.74182 7.95968C8.76604 7.7621 8.74182 7.53629 8.59653 7.31048C8.54809 7.16935 8.33016 7.02823 8.13643 7Z" />
                     </svg>
-                  </a>
+                  </motion.a>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="sm:col-span-1 lg:col-span-2">
+            <motion.div
+              className="sm:col-span-1 lg:col-span-2"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
+                <motion.h2
+                  className="mb-10 text-xl font-bold text-black dark:text-white"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
                   Liên hệ
-                </h2>
+                </motion.h2>
                 <ul className="grid grid-cols-1 gap-4 md:gap-2 ">
-                  <li className="mb-2 text-base text-body-color dark:text-body-color-dark">
-                    <p>Hotline</p>
-                    <p>098 131 72 25</p>
-                  </li>
-                  <li className="mb-2 text-base text-body-color dark:text-body-color-dark">
-                    <p>Email</p>
-                    <p>support@dschool.com.vn</p>
-                  </li>
-                  <li className="mb-2 text-base text-body-color dark:text-body-color-dark">
-                    <p>Address</p>
-                    <p>BT16B6 - 32, Làng Việt Kiều Châu Âu, Hà Đông, Hà Nội</p>
-                  </li>
+                  <motion.li
+                    className="mb-2 text-base text-body-color dark:text-body-color-dark p-3 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="font-semibold text-primary">Hotline</p>
+                    <p className="text-sm">098 131 72 25</p>
+                  </motion.li>
+                  <motion.li
+                    className="mb-2 text-base text-body-color dark:text-body-color-dark p-3 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="font-semibold text-primary">Email</p>
+                    <p className="text-sm">support@dschool.com.vn</p>
+                  </motion.li>
+                  <motion.li
+                    className="mb-2 text-base text-body-color dark:text-body-color-dark p-3 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="font-semibold text-primary">Address</p>
+                    <p className="text-sm">BT16B6 - 32, Làng Việt Kiều Châu Âu, Hà Đông, Hà Nội</p>
+                  </motion.li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="sm:col-span-1 lg:col-span-2">
+            <motion.div
+              className="sm:col-span-1 lg:col-span-2"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
+                <motion.h2
+                  className="mb-10 text-xl font-bold text-black dark:text-white"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
                   Đường dẫn
-                </h2>
+                </motion.h2>
                 <ul>
-                  <li>
+                  <motion.li
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <a
                       href="/"
-                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-all duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary p-2 rounded-lg hover:bg-white/50 dark:hover:bg-gray-800/50"
                     >
                       Trang chủ
-                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full" />
                     </a>
-                  </li>
-                  <li>
+                  </motion.li>
+                  <motion.li
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <a
                       href="/about"
-                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-all duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary p-2 rounded-lg hover:bg-white/50 dark:hover:bg-gray-800/50"
                     >
                       Giới thiệu
-                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full" />
                     </a>
-                  </li>
-                  <li>
+                  </motion.li>
+                  <motion.li
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <a
-                      href="/blog"
-                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      href="/feature"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-all duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary p-2 rounded-lg hover:bg-white/50 dark:hover:bg-gray-800/50"
                     >
                       Tính năng
-                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full" />
                     </a>
-                  </li>
-                  <li>
+                  </motion.li>
+                  <motion.li
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <a
-                      href="#"
-                      className="group relative mb-4 inline-block text-base text-body-color transition-colors duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      href="/contact"
+                      className="group relative mb-4 inline-block text-base text-body-color transition-all duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary p-2 rounded-lg hover:bg-white/50 dark:hover:bg-gray-800/50"
                     >
                       Liên hệ
-                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute left-0 top-full block h-[2px] w-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full" />
                     </a>
-                  </li>
+                  </motion.li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="sm:col-span-2 lg:col-span-3">
+            <motion.div
+              className="sm:col-span-2 lg:col-span-3"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
+                <motion.h2
+                  className="mb-10 text-xl font-bold text-black dark:text-white"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
                   Tải xuống
-                </h2>
+                </motion.h2>
                 <ul>
                   <div className="flex w-full flex-col items-center gap-3 md:items-start">
-                    <div className="flex w-full flex-row items-center">
-                      <div className="w-full">
+                    <div className="flex w-full flex-row items-center gap-2">
+                      <motion.div
+                        className="w-full"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         <Link href="" target="_blank">
                           <Image
                             src={googlepl}
                             alt="Google Play"
                             width={135}
                             height={40}
-                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
+                            className="w-full rounded-lg shadow-lg transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer border border-gray-200 dark:border-gray-700"
                           />
                         </Link>
-                      </div>
-                      <div className="w-full">
+                      </motion.div>
+                      <motion.div
+                        className="w-full"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         <Link href="" target="_blank">
                           <Image
                             src={appstore}
                             alt="App Store"
                             width={135}
                             height={40}
-                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
+                            className="w-full rounded-lg shadow-lg transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer border border-gray-200 dark:border-gray-700"
                           />
                         </Link>
-                      </div>
+                      </motion.div>
                     </div>
-                    <div className="flex w-full flex-row items-center">
-                      <div className="w-full">
+                    <div className="flex w-full flex-row items-center gap-2">
+                      <motion.div
+                        className="w-full"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         <Link href="" target="_blank">
                           <Image
                             src={windows}
                             alt="Windows"
                             width={135}
                             height={40}
-                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
+                            className="w-full rounded-lg shadow-lg transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer border border-gray-200 dark:border-gray-700"
                           />
                         </Link>
-                      </div>
-                      <div className="w-full">
+                      </motion.div>
+                      <motion.div
+                        className="w-full"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         <Link href="" target="_blank">
                           <Image
                             src={mac}
                             alt="Mac"
                             width={135}
                             height={40}
-                            className="w-full rounded-md shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:cursor-pointer hover:shadow-md"
+                            className="w-full rounded-lg shadow-lg transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer border border-gray-200 dark:border-gray-700"
                           />
                         </Link>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
-
-          <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
         </div>
+
+        <motion.div
+          className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          viewport={{ once: true }}
+        ></motion.div>
+
         <div className="absolute right-0 top-14 z-[-1]">
           <svg
             width="55"
@@ -379,7 +481,7 @@ const Footer: React.FC = () => {
             </defs>
           </svg>
         </div>
-      </footer>
+      </footer >
     </>
   );
 };

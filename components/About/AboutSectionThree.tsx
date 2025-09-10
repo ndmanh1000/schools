@@ -3,11 +3,9 @@ import ketoan from "../../public/images/about/ketoan.webp";
 
 const AboutSectionThree = () => {
   return (
-    <section className="py-16 md:py-20 lg:py-28">
+    <section >
       <div className="container border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
-        <p className="py-5 text-center text-2xl font-semibold text-black">
-          Hành chính, kế toán
-        </p>
+
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-1/2">
             <div
@@ -25,6 +23,9 @@ const AboutSectionThree = () => {
           </div>
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
+              <p className="py-5 text-2xl font-semibold text-black">
+                -Hành chính, kế toán
+              </p>
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
                 -Quản lý dễ dàng, lưu trữ thuận tiện với hồ sơ số
               </div>

@@ -3,14 +3,15 @@ import giaovien from "../../public/images/about/giaovien.webp";
 
 const AboutSectionTwo = () => {
   return (
-    <section className="py-16 md:py-20 lg:py-28">
+    <section>
       <div className="container">
-        <p className="py-5 text-center text-2xl font-semibold text-black">
-          Giáo viên
-        </p>
+
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
+              <p className="py-5 text-2xl font-semibold text-black">
+                -Giáo viên
+              </p>
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
                 -Quản lý lớp học
               </div>

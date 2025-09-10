@@ -35,7 +35,7 @@ const Brands = () => {
   return (
     <section className="pt-16">
       <div className="container">
-        <p className="py-5 text-center text-2xl font-semibold text-black">
+        <p className="py-5 text-center text-3xl font-bold text-black">
           Khách hàng tiêu biểu
         </p>
         <div className="w-full">
@@ -59,7 +59,7 @@ const Brands = () => {
                     <a
                       target="_blank"
                       rel="nofollow noreferrer"
-                      className="relative h-20 w-[180px] opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 dark:opacity-60 dark:hover:opacity-100"
+                      className="relative h-20 w-[180px] opacity-100 grayscale-0 transition hover:scale-105 dark:opacity-100"
                     >
                       <Image
                         src={brand.image}

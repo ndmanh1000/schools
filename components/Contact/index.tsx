@@ -126,7 +126,7 @@ const Contact: React.FC<ContactProps> = ({
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
-        <p className="py-5 text-center text-2xl font-semibold text-black">
+        <p className="py-5 text-center text-3xl font-bold text-black">
           Sẵn sàng quản trị số với DSchool ?
         </p>
         <div className="-mx-4 flex flex-wrap">
