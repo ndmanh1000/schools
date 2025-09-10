@@ -50,7 +50,7 @@ export default function FeatureFaq() {
             <div className="container relative z-10">
                 {/* Section Title */}
                 <motion.div
-                    className="flex items-center justify-center text-center mb-16"
+                    className="flex items-center justify-center text-center "
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
