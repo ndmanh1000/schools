@@ -355,7 +355,7 @@ const Contact: React.FC<ContactProps> = ({
                         transition={{ duration: 0.6, delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        <div className="h-full flex items-center justify-center">
+                        <div className="h-full flex items-center justify-cente mt-4">
                             <motion.img
                                 src={cskkkk.src}
                                 alt="cskkkk"
@@ -482,7 +482,7 @@ const Contact: React.FC<ContactProps> = ({
                 }
             />
 
-        </section >
+        </section>
     );
 };
 
