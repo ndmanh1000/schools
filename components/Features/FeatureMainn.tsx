@@ -68,7 +68,7 @@ export default function FeatureMainn() {
             title: "Kết nối dữ liệu ba chiều",
             icon: "🔗",
             features: [
-                "Báo cáo theo chuẩn Bộ/Sở Giáo dục tự động",
+                "Báo cáo theo chuẩn Bộ/Sở Giáo dục",
                 "Đồng bộ thông tin học tập – điểm số – tài chính lên hệ thống ngành",
                 "Push thông báo xuống phụ huynh & học sinh theo thời gian thực"
             ],

@@ -5,6 +5,8 @@ import tinhnang11 from "../../public/images/feature/tinhnang11.webp";
 import { CommonModal, useModal } from "../Modal/CommonModal";
 import { submitToGoogleSheetsAPI, FormData as GoogleSheetsFormData } from "../../lib/googleSheets";
 import { showSuccess, showError, showInfo, showLoading, dismissToast } from "../Common/NotificationToast";
+import tnbg from "../../public/images/feature/tnbg.webp";
+
 
 export default function FeatureHead() {
     // Modal states
@@ -75,7 +77,7 @@ export default function FeatureHead() {
 
         try {
             console.log("🚀 Starting register form submission...");
-            
+
             // Validate required fields
             if (!registerFormData.name || !registerFormData.email || !registerFormData.phone) {
                 showError("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)", "Thiếu thông tin");
@@ -108,7 +110,7 @@ export default function FeatureHead() {
                 if (loadingToastId) dismissToast(loadingToastId);
                 showSuccess("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.", "Đăng ký thành công!");
                 console.log("✅ Form submitted successfully");
-                
+
                 // Reset form
                 setRegisterFormData({
                     name: "",
@@ -136,7 +138,7 @@ export default function FeatureHead() {
 
         try {
             console.log("🚀 Starting buy form submission...");
-            
+
             // Validate required fields
             if (!buyFormData.name || !buyFormData.email || !buyFormData.phone) {
                 showError("Vui lòng điền đầy đủ thông tin bắt buộc (Họ tên, Email, Số điện thoại)", "Thiếu thông tin");
@@ -169,7 +171,7 @@ export default function FeatureHead() {
                 if (loadingToastId) dismissToast(loadingToastId);
                 showSuccess("Cảm ơn bạn đã quan tâm! Chúng tôi sẽ liên hệ lại sớm nhất để tư vấn gói phù hợp.", "Đăng ký thành công!");
                 console.log("✅ Form submitted successfully");
-                
+
                 // Reset form
                 setBuyFormData({
                     name: "",
@@ -485,21 +487,21 @@ export default function FeatureHead() {
 
                     <div className=" w-full">
                         <img
-                            src={tinhnang11.src}
+                            src={tnbg.src}
 
-                            className="w-full object-cover object-center"
+                            className="w-full object-cover object-center rounded-md"
                         />
                     </div>
                 </div>
 
                 {/* Content Section - Below the image */}
-                <div className="container pt-4 md:pt-8 lg:pt-16">
+                <div className="container pt-4 md:pt-8 lg:pt-16 relative z-10">
                     <div className="w-full mx-auto">
                         <div>
                             {/* Section Title */}
-                          
 
-                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+
+                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center relative z-20">
                                 {/* Đăng ký ngay button - simplified for mobile */}
                                 <button
                                     onClick={(e) => {
@@ -514,8 +516,8 @@ export default function FeatureHead() {
                                         console.log('Register button touched on mobile');
                                         handleRegisterClick();
                                     }}
-                                    className="relative inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 w-full sm:w-auto min-h-[50px] cursor-pointer"
-                                    style={{ 
+                                    className="relative inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 w-full sm:w-auto min-h-[50px] cursor-pointer z-30"
+                                    style={{
                                         WebkitTapHighlightColor: 'transparent',
                                         WebkitTouchCallout: 'none',
                                         WebkitUserSelect: 'none',
@@ -548,8 +550,8 @@ export default function FeatureHead() {
                                         console.log('Buy button touched on mobile');
                                         handleBuyClick();
                                     }}
-                                    className="relative inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 w-full sm:w-auto min-h-[50px] cursor-pointer"
-                                    style={{ 
+                                    className="relative inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 w-full sm:w-auto min-h-[50px] cursor-pointer z-30"
+                                    style={{
                                         WebkitTapHighlightColor: 'transparent',
                                         WebkitTouchCallout: 'none',
                                         WebkitUserSelect: 'none',
