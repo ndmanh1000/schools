@@ -20,7 +20,7 @@ export async function submitToGoogleSheetsAPI(formData: FormData): Promise<boole
     try {
         console.log("🔄 GoogleSheets: Calling API route...");
 
-        const response = await fetch('/api/submit-to-sheets', {
+        const response = await fetch('/api/submit-to-sheets', { // cho nay goi api ten the kia
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
