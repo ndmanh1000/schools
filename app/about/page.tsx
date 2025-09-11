@@ -8,6 +8,7 @@ import AboutMissionVision from "@/components/About/AboutMissionVision";
 import AboutCoreValues from "@/components/About/AboutCoreValues";
 import AboutDevelopment from "@/components/About/AboutDevelopment";
 import Contact from "@/components/Contact";
+import Video from "@/components/Video";
 
 export const metadata: Metadata = {
   title: "DSchool phát triển từ lõi Blue Rise, tùy biến cho giáo dục, mang đến giải pháp quản lý, giảng dạy và kết nối dữ liệu hiện đại, an toàn",
@@ -24,6 +25,7 @@ const AboutPage = () => {
       <AboutMissionVision />
       <AboutCoreValues />
       <AboutDevelopment />
+      <Video />
       <Contact />
       {/* <AboutSectionOne />
       <AboutSectionTwo /> */}

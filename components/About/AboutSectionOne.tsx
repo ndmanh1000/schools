@@ -29,18 +29,18 @@ const AboutSectionOne = () => {
             </div>
             <div className="w-full px-4 lg:w-1/2">
               <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
-                
+
                 <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                  -Nắm vững vận hành
+                  <span style={{ color: '#22c55e' }}>•</span> Nắm vững vận hành
                 </div>
                 <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                  -Quản trị dễ dàng
+                  <span style={{ color: '#22c55e' }}>•</span> Quản trị dễ dàng
                 </div>
                 <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                  -Theo dõi số liệu real - time
+                  <span style={{ color: '#22c55e' }}>•</span> Theo dõi số liệu real - time
                 </div>
                 <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                  -Ra quyết định nhanh chóng, chính xác
+                  <span style={{ color: '#22c55e' }}>•</span> Ra quyết định nhanh chóng, chính xác
                 </div>
               </div>
             </div>

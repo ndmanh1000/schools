@@ -23,15 +23,15 @@ const AboutSectionThree = () => {
           </div>
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
-            
+
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Quản lý dễ dàng, lưu trữ thuận tiện với hồ sơ số
+                <span style={{ color: '#22c55e' }}>•</span> Quản lý dễ dàng, lưu trữ thuận tiện với hồ sơ số
               </div>
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Theo dõi công, lương chi tiết, tránh nhầm lẫn
+                <span style={{ color: '#22c55e' }}>•</span> Theo dõi công, lương chi tiết, tránh nhầm lẫn
               </div>
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Báo cáo thu, chi, học phí minh bạch
+                <span style={{ color: '#22c55e' }}>•</span> Báo cáo thu, chi, học phí minh bạch
               </div>
             </div>
           </div>

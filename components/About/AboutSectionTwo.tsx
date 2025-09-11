@@ -9,15 +9,15 @@ const AboutSectionTwo = () => {
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
-             
+
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Quản lý lớp học
+                <span style={{ color: '#22c55e' }}>•</span> Quản lý lớp học
               </div>
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Theo sát lịch làm việc, thời khóa biểu
+                <span style={{ color: '#22c55e' }}>•</span> Theo sát lịch làm việc, thời khóa biểu
               </div>
               <div className="mb-4 text-[20px] font-bold text-[#8a92a1] dark:text-white ">
-                -Ra đề tự động, chấm thi online
+                <span style={{ color: '#22c55e' }}>•</span> Ra đề tự động, chấm thi online
               </div>
             </div>
           </div>
