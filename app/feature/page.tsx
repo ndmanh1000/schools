@@ -10,8 +10,8 @@ import FeatureFaq from "@/components/Features/FeatureFaq";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tính năng | DSchool - Nền Tảng Dành Cho Trường Học Số",
-  description: "DSchool là nền tảng dành cho trường học số, giúp bạn quản lý dữ liệu tập trung giúp bạn tổ chức, truy cập và phân tích dữ liệu một cách hiệu quả.",
+  title: "DSchool tích hợp LMS, khảo thí, tuyển sinh, kế toán và kết nối dữ liệu ngành. Một nền tảng, đầy đủ công cụ quản lý trường học thông minh",
+  description: "LMS, khảo thí, tuyển sinh, kế toán – tất cả trong một nền tảng DSchool",
   // other metadata
 };
 

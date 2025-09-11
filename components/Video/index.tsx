@@ -276,7 +276,7 @@ const Video = () => {
   const handleTabClick = (index: number) => {
     setSelectedIndex(index);
     setIsAutoPlaying(false);
-    
+
     // Resume auto-play after 10 seconds of inactivity
     setTimeout(() => {
       setIsAutoPlaying(true);
@@ -284,217 +284,219 @@ const Video = () => {
   };
 
   return (
-    <section className="relative z-50 py-16 md:py-20 lg:py-28 overflow-hidden">
-      <div className="container">
-        {/* Section Title with enhanced animation */}
-        <motion.div
-          className="wow fadeInUp"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <SectionTitle
-            title="5 lý do nên chọn DSchool"
-            paragraph="DSchool là giải pháp quản lý trường học toàn diện, giúp bạn tiết kiệm thời gian, nâng cao hiệu quả và tối ưu hóa quy trình vận hành."
-            center
-            mb="60px"
-          />
-        </motion.div>
+    <>
+      <section className="relative z-50 py-16 md:py-20 lg:py-28 overflow-hidden">
+        <div className="container">
+          {/* Section Title with enhanced animation */}
+          <motion.div
+            className="wow fadeInUp"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <SectionTitle
+              title="5 lý do nên chọn DSchool"
+              paragraph="DSchool là giải pháp quản lý trường học toàn diện, giúp bạn tiết kiệm thời gian, nâng cao hiệu quả và tối ưu hóa quy trình vận hành."
+              center
+              mb="60px"
+            />
+          </motion.div>
 
-        {/* Enhanced Tabs with staggered animation and auto-play indicator */}
-        <motion.div
-          className="mb-12 flex flex-wrap justify-center gap-3 sm:gap-4 wow fadeInUp"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {reasons.map((reason, index) => (
-            <motion.button
-              key={index}
-              onClick={() => handleTabClick(index)}
-              className={`relative rounded-full border px-4 py-3 text-xs sm:text-sm font-medium transition-all duration-300 md:text-base md:px-6 transform hover:scale-105 active:scale-95 min-h-[48px] flex items-center justify-center text-center
+          {/* Enhanced Tabs with staggered animation and auto-play indicator */}
+          <motion.div
+            className="mb-12 flex flex-wrap justify-center gap-3 sm:gap-4 wow fadeInUp"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {reasons.map((reason, index) => (
+              <motion.button
+                key={index}
+                onClick={() => handleTabClick(index)}
+                className={`relative rounded-full border px-4 py-3 text-xs sm:text-sm font-medium transition-all duration-300 md:text-base md:px-6 transform hover:scale-105 active:scale-95 min-h-[48px] flex items-center justify-center text-center
                 ${selectedIndex === index
-                  ? "border-primary bg-primary text-white shadow-lg shadow-primary/25"
-                  : "border-gray-300 bg-white text-gray-700 hover:border-primary hover:text-primary hover:shadow-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300"
-                }`}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
-              {selectedIndex === index && (
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-blue-600"
-                  layoutId="activeTab"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-2">
-                {reason.title}
-                {selectedIndex === index && isAutoPlaying && (
+                    ? "border-primary bg-primary text-white shadow-lg shadow-primary/25"
+                    : "border-gray-300 bg-white text-gray-700 hover:border-primary hover:text-primary hover:shadow-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300"
+                  }`}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                {selectedIndex === index && (
                   <motion.div
-                    className="w-2 h-2 bg-white rounded-full"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 1, repeat: Infinity }}
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-blue-600"
+                    layoutId="activeTab"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-              </span>
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Auto-play status indicator */}
-        <motion.div
-          className="flex justify-center mb-6 wow fadeInUp"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center px-3 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700 shadow-sm">
-            <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}></div>
-          </div>
-        </motion.div>
-
-        {/* Enhanced Animated Reason Display */}
-        <motion.div
-          className="mx-auto max-w-4xl wow fadeInUp"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedIndex}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -30, scale: 0.95 }}
-              transition={{
-                duration: 0.5,
-                ease: [0.4, 0, 0.2, 1],
-                type: "spring",
-                stiffness: 100
-              }}
-              className="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-xl dark:bg-gray-800 dark:border-gray-700"
-            >
-              {/* Decorative elements */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-20"></div>
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-primary rounded-full opacity-10"></div>
-
-              <div className="relative">
-                <motion.h4
-                  className="mb-4 text-2xl font-bold text-primary"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                >
-                  {selectedReason.title}
-                </motion.h4>
-                <motion.p
-                  className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 }}
-                >
-                  {selectedReason.desc}
-                </motion.p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Enhanced CTA Button */}
-        <motion.div
-          className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mt-12 xl:mt-16 wow fadeInUp"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.button
-            onClick={handleRegisterClick}
-            className="group relative mt-4 rounded-xl bg-gradient-to-r from-[#053cc0] to-[#1e40af] px-10 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              <span>Đăng ký ngay</span>
-              <motion.span
-                className="text-lg"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.span>
-            </span>
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#1e40af] to-[#1e3a8a] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-          </motion.button>
-
-          {/* Test Notification Button - Remove after testing */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-4"
-          >
-
+                <span className="relative z-10 flex items-center gap-2">
+                  {reason.title}
+                  {selectedIndex === index && isAutoPlaying && (
+                    <motion.div
+                      className="w-2 h-2 bg-white rounded-full"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    />
+                  )}
+                </span>
+              </motion.button>
+            ))}
           </motion.div>
-        </motion.div>
-      </div>
 
-      {/* Enhanced Background Shape with animation */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 z-[-1] h-full w-full bg-[url(/images/video/shape.svg)] bg-cover bg-center bg-no-repeat"
-        initial={{ opacity: 0, scale: 1.1 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true }}
-      />
+          {/* Auto-play status indicator */}
+          <motion.div
+            className="flex justify-center mb-6 wow fadeInUp"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center justify-center px-3 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}></div>
+            </div>
+          </motion.div>
 
-      {/* Floating decorative elements */}
-      <motion.div
-        className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"
-        animate={{
-          y: [0, -20, 0],
-          x: [0, 10, 0]
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-16 h-16 bg-blue-500/10 rounded-full blur-xl"
-        animate={{
-          y: [0, 20, 0],
-          x: [0, -10, 0]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+          {/* Enhanced Animated Reason Display */}
+          <motion.div
+            className="mx-auto max-w-4xl wow fadeInUp"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedIndex}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -30, scale: 0.95 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                  type: "spring",
+                  stiffness: 100
+                }}
+                className="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-xl dark:bg-gray-800 dark:border-gray-700"
+              >
+                {/* Decorative elements */}
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-20"></div>
+                <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-primary rounded-full opacity-10"></div>
 
-      <div className="relative z-[9999999]" style={{ zIndex: 9999999 }}>
-        <CommonModal
-          isOpen={isRegisterModalOpen}
-          onClose={closeRegisterModal}
-          title=""
-          content={registerModalContent}
-          primaryButtonText=""
-          secondaryButtonText=""
-          onPrimaryClick={() => { }}
-          size="md"
-          hideFooter={true}
+                <div className="relative">
+                  <motion.h4
+                    className="mb-4 text-2xl font-bold text-primary"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                  >
+                    {selectedReason.title}
+                  </motion.h4>
+                  <motion.p
+                    className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
+                  >
+                    {selectedReason.desc}
+                  </motion.p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Enhanced CTA Button */}
+          <motion.div
+            className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mt-12 xl:mt-16 wow fadeInUp"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.button
+              onClick={handleRegisterClick}
+              className="group relative mt-4 rounded-xl bg-gradient-to-r from-[#053cc0] to-[#1e40af] px-10 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <span>Đăng ký ngay</span>
+                <motion.span
+                  className="text-lg"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </span>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#1e40af] to-[#1e3a8a] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            </motion.button>
+
+            {/* Test Notification Button - Remove after testing */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-4"
+            >
+
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Enhanced Background Shape with animation */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 z-[-1] h-full w-full bg-[url(/images/video/shape.svg)] bg-cover bg-center bg-no-repeat"
+          initial={{ opacity: 0, scale: 1.1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
         />
-      </div>
-    </section>
+
+        {/* Floating decorative elements */}
+        <motion.div
+          className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"
+          animate={{
+            y: [0, -20, 0],
+            x: [0, 10, 0]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-16 h-16 bg-blue-500/10 rounded-full blur-xl"
+          animate={{
+            y: [0, 20, 0],
+            x: [0, -10, 0]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+      </section>
+
+      {/* Modal rendered outside section to avoid z-index stacking context issues */}
+      <CommonModal
+        isOpen={isRegisterModalOpen}
+        onClose={closeRegisterModal}
+        title=""
+        content={registerModalContent}
+        primaryButtonText=""
+        secondaryButtonText=""
+        onPrimaryClick={() => { }}
+        size="md"
+        hideFooter={true}
+      />
+    </>
   );
 };
 

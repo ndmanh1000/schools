@@ -92,7 +92,10 @@ export function CommonModal({
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0
+        bottom: 0,
+        // Ensure modal is above everything on mobile
+        WebkitTransform: 'translateZ(0)',
+        transform: 'translateZ(0)'
       }}
     >
       {/* Backdrop */}
