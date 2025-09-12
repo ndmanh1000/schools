@@ -11,8 +11,8 @@ import Contact from "@/components/Contact";
 import Video from "@/components/Video";
 
 export const metadata: Metadata = {
-  title: "DSchool phát triển từ lõi Blue Rise, tùy biến cho giáo dục, mang đến giải pháp quản lý, giảng dạy và kết nối dữ liệu hiện đại, an toàn",
-  description: "DSchool – giải pháp chuyển đổi số giáo dục hiện đại, minh bạch, an toàn",
+  title: "DSchool – giải pháp chuyển đổi số giáo dục hiện đại, minh bạch, an toàn",
+  description: "DSchool – số hóa giáo dục hiệu quả, minh bạch và an toàn",
   // other metadata
 };
 

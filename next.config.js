@@ -10,6 +10,17 @@ const nextConfig = {
       },
     ],
   },
+
+  // ✅ Thêm cấu hình redirect ở đây
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: 'https://www.dschool.vn/',
+        permanent: true, // ⚠️ quan trọng: chuyển thành redirect 301
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

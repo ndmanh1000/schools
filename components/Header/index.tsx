@@ -50,6 +50,7 @@ const Header = () => {
           <div className="relative -mx-4 flex items-center justify-between">
             <div className="w-60 max-w-full px-4 xl:mr-12">
               <Link
+                rel="canonical"
                 href="/"
                 className={`header-logo block w-full ${sticky ? "py-5 lg:py-2" : "py-8"
                   } `}
@@ -97,6 +98,7 @@ const Header = () => {
                         <li key={index} className="group relative">
                           {menuItem.path ? (
                             <Link
+                              rel="canonical"
                               href={menuItem.path}
                               className={`flex py-4 text-2xl font-semibold lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-base ${usePathName === menuItem.path
                                 ? "text-primary dark:text-white"
@@ -138,6 +140,7 @@ const Header = () => {
                                     key={index}
                                     className="block rounded py-2.5 text-sm text-dark hover:text-primary dark:text-white/70 dark:hover:text-white lg:px-3"
                                     onClick={() => setNavbarOpen(false)}
+                                    rel="canonical"
                                   >
                                     {submenuItem.title}
                                   </Link>

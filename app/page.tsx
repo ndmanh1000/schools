@@ -16,8 +16,8 @@ import NotificationTest from "@/components/Test/NotificationTest";
 
 
 export const metadata: Metadata = {
-  title: "DSchool – nền tảng chuyển đổi số toàn diện cho trường học, kết nối Bộ – Trường – Gia đình, giúp quản lý tinh gọn, minh bạch và hiệu quả",
-  description: "DSchool – giải pháp chuyển đổi số toàn diện, kết nối Bộ – Trường – Gia đình",
+  title: "DSchool – giải pháp chuyển đổi số toàn diện, kết nối Bộ – Trường – Gia đình",
+  description: "DSchool – giải pháp chuyển đổi số toàn diện",
   // other metadata
 };
 

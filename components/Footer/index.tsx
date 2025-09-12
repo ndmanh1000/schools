@@ -215,7 +215,9 @@ const Footer: React.FC = () => {
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Link href="" target="_blank">
+                        <Link
+                          rel="canonical"
+                          href="" target="_blank">
                           <Image
                             src={googlepl}
                             alt="Google Play"
@@ -231,7 +233,9 @@ const Footer: React.FC = () => {
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Link href="" target="_blank">
+                        <Link
+                          rel="canonical"
+                          href="" target="_blank">
                           <Image
                             src={appstore}
                             alt="App Store"
@@ -249,7 +253,9 @@ const Footer: React.FC = () => {
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Link href="" target="_blank">
+                        <Link
+                          rel="canonical"
+                          href="" target="_blank">
                           <Image
                             src={windows}
                             alt="Windows"
@@ -265,7 +271,9 @@ const Footer: React.FC = () => {
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Link href="" target="_blank">
+                        <Link
+                          rel="canonical"
+                          href="" target="_blank">
                           <Image
                             src={mac}
                             alt="Mac"

@@ -488,8 +488,8 @@ export default function FeatureHead() {
                     <div className=" w-full">
                         <img
                             src={tnbg.src}
-
                             className="w-full object-cover object-center rounded-md"
+                            alt="tnbg"
                         />
                     </div>
                 </div>
