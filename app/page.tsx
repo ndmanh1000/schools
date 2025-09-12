@@ -16,6 +16,7 @@ import AboutSectionFour from "@/components/About/AboutSectionFour";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.dschool.vn"),
   title: "DSchool – giải pháp chuyển đổi số toàn diện, kết nối Bộ – Trường – Gia đình",
   description: "DSchool – giải pháp chuyển đổi số toàn diện, minh bạch và an toàn",
   openGraph: {
