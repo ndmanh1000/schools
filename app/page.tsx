@@ -14,11 +14,32 @@ import AboutSectionThree from "@/components/About/AboutSectionThree";
 import AboutSectionFour from "@/components/About/AboutSectionFour";
 import NotificationTest from "@/components/Test/NotificationTest";
 
-
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.dschool.vn'), // ✅ Thêm dòng này
   title: "DSchool – giải pháp chuyển đổi số toàn diện, kết nối Bộ – Trường – Gia đình",
-  description: "DSchool – giải pháp chuyển đổi số toàn diện",
-  // other metadata
+  description: "DSchool – giải pháp chuyển đổi số toàn diện, minh bạch và an toàn",
+  openGraph: {
+    title: "DSchool – giải pháp chuyển đổi số toàn diện, kết nối Bộ – Trường – Gia đình",
+    description: "Nền tảng DSchool kết nối Bộ – Trường – Gia đình, tích hợp LMS, khảo thí, tuyển sinh và kế toán.",
+    url: "https://www.dschool.vn",
+    siteName: "DSchool",
+    images: [
+      {
+        url: "/thumbnail-.jpg", // Đường dẫn thumbnail
+        width: 1200,
+        height: 630,
+        alt: "DSchool – chuyển đổi số giáo dục",
+      },
+    ],
+    locale: "vi_VN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DSchool – giải pháp chuyển đổi số toàn diện",
+    description: "DSchool – nền tảng chuyển đổi số giáo dục hiện đại, an toàn, kết nối đa bên.",
+    images: ["/thumbnail-.jpg"],
+  },
 };
 
 export default function Home() {
